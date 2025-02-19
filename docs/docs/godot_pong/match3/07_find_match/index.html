@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="uk-ua" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Пошук та позначення збігів Ми уже робили спрощену версію функції, котра шукала послідовності збігів кольорів. Але для оцінки усієї сітки елементів вона не підходить. Для цього нам буде потрібна дещо складніша функція. Але принцип залишається тим самим. Нам буде потрібно пройтись по усім рядкам та стовпцям, та порівняти елементи. Але перш ніж перейти до цього, заглянемо в код елементу, тобто Piece.gd. Там у нас поки було досить порожньо. Ми маємо тільки одну глобальну змінну, котра зберігає індекс кольору елементу. Уже скоро ми сюди допишемо трохи більше, як то різноманітні ефекти при переміщенні. Але зараз нам потрібно додати лише ще одну глобальну змінну:\n">
+<title>7. Пошук збігів</title>
+
+<link rel='canonical' href='http://localhost:1313/docs/godot_pong/match3/07_find_match/'>
+
+<link rel="stylesheet" href="/scss/style.min.8886f9dd038c8a477d4f75f0b0af50ed278e9a067c557fff3f468670616bda14.css"><meta property='og:title' content="7. Пошук збігів">
+<meta property='og:description' content="Пошук та позначення збігів Ми уже робили спрощену версію функції, котра шукала послідовності збігів кольорів. Але для оцінки усієї сітки елементів вона не підходить. Для цього нам буде потрібна дещо складніша функція. Але принцип залишається тим самим. Нам буде потрібно пройтись по усім рядкам та стовпцям, та порівняти елементи. Але перш ніж перейти до цього, заглянемо в код елементу, тобто Piece.gd. Там у нас поки було досить порожньо. Ми маємо тільки одну глобальну змінну, котра зберігає індекс кольору елементу. Уже скоро ми сюди допишемо трохи більше, як то різноманітні ефекти при переміщенні. Але зараз нам потрібно додати лише ще одну глобальну змінну:\n">
+<meta property='og:url' content='http://localhost:1313/docs/godot_pong/match3/07_find_match/'>
+<meta property='og:site_name' content='3D Vitalii Shmorhun'>
+<meta property='og:type' content='article'><meta property='article:section' content='Docs' />
+<meta name="twitter:title" content="7. Пошук збігів">
+<meta name="twitter:description" content="Пошук та позначення збігів Ми уже робили спрощену версію функції, котра шукала послідовності збігів кольорів. Але для оцінки усієї сітки елементів вона не підходить. Для цього нам буде потрібна дещо складніша функція. Але принцип залишається тим самим. Нам буде потрібно пройтись по усім рядкам та стовпцям, та порівняти елементи. Але перш ніж перейти до цього, заглянемо в код елементу, тобто Piece.gd. Там у нас поки було досить порожньо. Ми маємо тільки одну глобальну змінну, котра зберігає індекс кольору елементу. Уже скоро ми сюди допишемо трохи більше, як то різноманітні ефекти при переміщенні. Але зараз нам потрібно додати лише ще одну глобальну змінну:\n">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Показати меню">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <script src="/js/menu-toggle.js"></script>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_1aa41b581464c1d7.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🫨</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">3D Vitalii Shmorhun</a></h1>
+            <h2 class="site-description">Сам собі 3D-художник, аніматор та програміст</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://www.artstation.com/evilvitjoker'
+                        target="_blank"
+                        title="Artstation"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   fill="none"
+   stroke="currentColor"
+   stroke-width="2"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   class="icon icon-tabler icons-tabler-outline icon-tabler-brand-artstation"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="brand-artstation.svg"
+   xml:space="preserve"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs2" /><sodipodi:namedview
+     id="namedview2"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="17.958333"
+     inkscape:cx="10.385151"
+     inkscape:cy="17.095128"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" /><path
+     stroke="none"
+     d="M0 0h24v24H0z"
+     fill="none"
+     id="path1" /><path
+     id="path2"
+     d="m 9.8106368,2.9827896 10.3481442,17.9853764 1.80784,-3.1337 a 2.0046377,2.0046377 0 0 0 0.0017,-2.004012 L 15.13945,3.9957884 A 2.0078796,2.0078796 0 0 0 13.404329,2.9912454 Z M 8.105958,5.9135521 3.4688252,13.909308 H 12.74309 Z M 1.7641464,16.858673 3.5500004,19.934875 A 2.1718974,2.1718974 0 0 0 5.4288679,21.01721 H 16.833982 l -2.352389,-4.158537 z"
+     style="opacity:1" /></svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Acvarium/'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.instagram.com/vitshmorgun/'
+                        target="_blank"
+                        title="Instagram"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M16.5 7.5v.01" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://acvarium.itch.io/'
+                        target="_blank"
+                        title="itch.io"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-itch"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 7v1c0 1.087 1.078 2 2 2c1.107 0 2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2c.922 0 2 -.913 2 -2v-1c-.009 -.275 -.538 -.964 -1.588 -2.068a3 3 0 0 0 -2.174 -.932h-12.476a3 3 0 0 0 -2.174 .932c-1.05 1.104 -1.58 1.793 -1.588 2.068z" /><path d="M4 10c-.117 6.28 .154 9.765 .814 10.456c1.534 .367 4.355 .535 7.186 .536c2.83 -.001 5.652 -.169 7.186 -.536c.99 -1.037 .898 -9.559 .814 -10.456" /><path d="M10 16l2 -2l2 2" /><path d="M12 14v4" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/@fos_ua'
+                        target="_blank"
+                        title="Youtube"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path d="M10 9l5 3l-5 3z" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Домівка</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Архів</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Посилання</span>
+            </a>
+        </li>
+        
+        <div class="auto-menu-box">
+            
+            <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/">Основи Python</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%B7%D0%BC%D1%96%D0%BD%D0%BD%D1%96_%D1%82%D0%B0_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B8/">1. Змінні Та Оператори</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D1%82%D0%B8%D0%BF%D0%B8_%D0%B4%D0%B0%D0%BD%D0%B8%D1%85/">2. Типи Даних</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B0%D1%86%D1%96%D1%97_%D1%82%D0%B8%D0%BF%D1%96%D0%B2_%D0%B4%D0%B0%D0%BD%D0%B8%D1%85/">3. Перетворення Типів Даних</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D1%96%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%96%D1%81%D1%82%D1%8C/">4. Інтерактивність</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F/">5. Команди Управління</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/function/">6. Функції</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/">Базовий Курс Godot</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/">Pong</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/new_game/">1. Створення Нового Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/interface/">2. Інтерфейс Godot</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/nodes_and_scenes/">3. Вузли Та Сцени</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/paddle/">4. Перша Ракетка</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/paddle2/">5. Друга Ракетка</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/ball/">6. М&#39;яч</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/walls/">7. Стінки</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/score/">8. Рахунок</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/gdscript/">GDScript</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/gdscript/example/">1. Приклад Коду</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/gdscript/key_words/">2. Ключові Слова</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/gdscript/operators/">3. Оператори</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/">Flappy Bird</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/game_setup/">1. Налаштування Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/player_scene/">2. Сцена Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/player_script/">3. Сценарій Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/animated_ground/">4. Анімація Землі</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/pipe_scene/">5. Труба</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/obstacle_scene/">6. Сцена Перешкоди</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/obstacle_generator/">7. Генератор Перешкод</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/obstacle_collision/">8. Зіткнення З Перешкодами</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/ground_collision/">9. Зіткнення З Землею</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/score/">10. Виведення Рахунку</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/game_over_panel/">11. Панель Game Over</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/animated_skyline/">12. Анімований Фон</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/">Три В Ряд</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/01_project_setup/">1. Налаштування Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/02_piece/">2. Спочатку Було Яйце</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/03_grid/">3. Сітка Елементів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/04_random_and_structure/">4. Випадковість Та Структура</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/05_fair_game/">5. Чесна Гра</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/06_slide_pieces/">6. Переміщення Елементів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/07_find_match/">7. Пошук Збігів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/08_delete_match/">8. Видалення Збігів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/09_collaps/">9. Колапс В Порожні</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/10_replace_empty/">10. Заповнення Порожніх</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/11_tween_animations/">11. Анімаційні Ефекти</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/12_highlight/">12. Підсвітка Та Фон</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/13_limit_movement/">13. Обмеження Руху</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/14_swap_back/">14. Крок Вперед, Крок Назад</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/15_block_player_moves/">15. Блокування Рухів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/16_score/">16. Рахунок</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/17_restart/">17. Рестарт Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/18_resaurces/">18. Додаткові Ресурси</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/homework_project01/">Самостійна Робота</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/01_sandbox/">1. Пісочниця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/02_material_basis/">2. Основи Матеріалів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/03_fps_player/">3. Гравець Від Першого Лиця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/04_player_walk/">4. Крокуємо Вперед</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/05_walls/">5. Стіни</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/06_main_menu/">6. Головне Меню Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/07_global/">7. &#34;Global&#34; Та AutoLoad</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/08_level_loader/">8. Завантаження Рівнів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/09_back_to_main_menu/">9. Повернення В Головне Меню</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/10_doors/">10. Двері</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/11_keys/">11. Ключі</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/12_level_end/">12. Завершення Рівня</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/010_introduction/">1. Знайомство З Проектом</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/020_point_and_click/">2. Куди Вказує Курсор</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/030_camera_movement/">3. Рух Камери</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/040_animated_character/">4. Анімований Персонаж</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/050_pickable/">5. Піднімання Предметів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/060_store_picked/">6. Інвентар</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/070_effect_spawner/">7. Ефекти Та Звуки</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/080_mushroom/">8. Гриби</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/090_spawn_mushroom/">9. Генерація Грибів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/100_forest/">10. Ліс</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/110_save_game/">11. Збереження Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/120_load_game/">12. Завантаження Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/130_save_items/">13. Збереження Інвентарю</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/010_first_setup/">1. Базові Налаштування</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/020_player/">2. Код Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/030_character_animation/">3. Анімація Персонажу</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/040_attrack/">4. Атака Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/060_enemy_attack/">6. Противник. Атака</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/070_attack_from_above/">7. Атака Згори</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+</ul>
+
+            
+        </div>
+        
+    </ol>
+</aside>
+
+    
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/docs/godot_pong/match3/07_find_match/">7. Пошук збігів</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Час читання: 7 хв
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="пошук-та-позначення-збігів">Пошук та позначення збігів
+</h1><p>Ми уже робили спрощену версію функції, котра шукала послідовності збігів кольорів. Але для оцінки усієї сітки елементів вона не підходить. Для цього нам буде потрібна дещо складніша функція. Але принцип залишається тим самим. Нам буде потрібно пройтись по усім рядкам та стовпцям, та порівняти елементи. Але перш ніж перейти до цього, заглянемо в код елементу, тобто <code>Piece.gd</code>. Там у нас поки було досить порожньо. Ми маємо тільки одну глобальну змінну, котра зберігає індекс кольору елементу. Уже скоро ми сюди допишемо трохи більше, як то різноманітні ефекти при переміщенні. Але зараз нам потрібно додати лише ще одну глобальну змінну:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">matched</span> <span class="o">=</span> <span class="kc">false</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Ця змінна зберігатиме стан, який вказуватиме, що даний елемент є частиною виграшної послідовності із 3 або більше однакового кольору.</p>
+<p>Після цього, ми знову повертаємось до сценарію <code>Grid.gd</code>. Створимо нову функцію, яка відповідатиме за пошук та позначення усіх елементів, що належать до виграшних комбінацій.</p>
+<p>Для початку, просто на всякий випадок, пройдемось по усьому списку, та переконаємось, що ця позначка знята. Також нам тимчасово буде потрібен якийсь спосіб візуально позначити ті писанки, які збігаються. Таким візуальним способом позначення для нас буде прозорість зображення писанки. Змінити прозорість можна зміною альфа складової (альфа, це канал, який відповідає за прозорість) кольору <code>Modulate</code>. Параметр <code>Modulate</code> та <code>Self Modulate</code> це спосіб вплинути на колір будь-якого двовимірного елементу. Кожен канал (червоний, зелений, синій та прозорість) може приймати дробові значення між 0 та 1. Відповідно, якщо мова йде про прозорість, значення <code>0</code> відповідає абсолютно прозорому, а <code>1</code> - повністю непрозорому.</p>
+<p>Якщо ми збираємось змінювати це значення для тих елементів, які збігаються, то для початку повернемо альфу для всіх в значення <code>1</code></p>
+<p>Тож, функція поки виглядатиме так:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">find_matches</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">matched</span> <span class="o">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">modulate</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Тут ми, як і робили досі, подвійним циклом проходимось по усім елементам, де спочатку перевіряємо, чи вони не порожні, а якщо ні, тоді скидаємо значення <code>matched</code> на <code>false</code> та повністю позбуваємось прозорості.</p>
+<p>Решта функції на перший погляд може виглядати досить складною, але насправді там немає нічого такого, що ми ще не робили. Повна функція пошуку та позначення збігів кольорів, разом з тим, що ми щойно написали, буде виглядати так:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">find_matches</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">matched</span> <span class="o">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">modulate</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="ow">and</span> \
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">					<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">matched</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">					<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">modulate</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="ow">and</span> \
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">					<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">matched</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">					<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">modulate</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>З першою частиною, де усі значення скидаються, в тому числі прозорість. ми уже познайомились. Далі просто багато повторення одного і того самого.
+Ви можете побачити, ще дві частини, одна з яких відповідає за пошук збігів по горизонталі, а друга по вертикалі. По суті своїй, вони роблять одне і те ж. Тож розглянемо той, що шукає по горизонталі.</p>
+<p>Знову починаємо з подвійного циклу, тільки цього разу ми пропускаємо самий перший елемент і самий останній. Далі перевіряємо, чи сусід зліва і сусід справа мають той самий колір. Якщо так, пробігаємось циклом по цим трьом елементам та позначаємо їх.</p>
+<p>І ще раз повторюємо цей процес для вертикалі.
+Ми усе ще не викликаємо цю функцію ніде. Нам треба її викликати кожен раз, як гравець успішно завершив переміщення. Тож, повертаємось в функцію <code>_input(event)</code> та в кінець додаємо виклик функції пошуку збігів. За одно можемо нарешті забрати рядок друку координат натиску. Після цих змін, функція повинна виглядати таким чином:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">_input</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="nc">InputEventScreenTouch</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="nf">is_pressed</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="n">first_touch</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">position</span>
+</span></span><span class="line"><span class="cl">			<span class="n">first_touch_on_grid</span> <span class="o">=</span> <span class="nf">pixel_to_grid</span><span class="p">(</span><span class="n">first_touch</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nf">is_in_grid</span><span class="p">(</span><span class="n">first_touch_on_grid</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			    <span class="n">controlling</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">!</span><span class="n">controlling</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="n">final_touch</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">position</span>
+</span></span><span class="line"><span class="cl">			<span class="n">final_touch_on_grid</span> <span class="o">=</span> <span class="nf">pixel_to_grid</span><span class="p">(</span><span class="n">final_touch</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nf">is_in_grid</span><span class="p">(</span><span class="n">final_touch_on_grid</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">				<span class="nf">swap_pieces</span><span class="p">(</span><span class="n">first_touch_on_grid</span><span class="p">,</span> <span class="n">final_touch_on_grid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="nf">find_matches</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Якщо ми зараз запустимо гру, ось що можемо побачити:</p>
+<div class="video-wrapper">
+    <video
+    controls
+    src="MatchFindHighlight"
+    
+    autoplay
+    >
+        <p>
+            Your browser doesn't support HTML5 video. Here is a
+            <a href="MatchFindHighlight">link to the video</a> instead.
+        </p>
+    </video>
+</div>
+
+<p>Повний код <code>Grid.gd</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="kd">extends</span> <span class="nc">Node2D</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">piece_loaded</span> <span class="o">=</span> <span class="nb">preload</span><span class="p">(</span><span class="s2">&#34;res://Pieces/Piece.tscn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="n">PIECE_IMAGE_SIZE</span> <span class="o">=</span> <span class="mf">200.0</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="n">LEFT_OFFSET</span> <span class="o">=</span> <span class="mf">40.0</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">offset</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">piece_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">x_start</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">y_start</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">all_pieces</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">number_of_pieces</span> <span class="o">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">first_touch_on_grid</span> <span class="o">=</span> <span class="nc">Vector2</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">final_touch_on_grid</span> <span class="o">=</span> <span class="nc">Vector2</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="n">controlling</span> <span class="o">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">make_2d_array</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">array</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">width</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">array</span><span class="o">.</span><span class="nf">append</span><span class="p">([])</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">height</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">array</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">match_at</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">color_index</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="kt">null</span> <span class="ow">and</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">color_index</span> <span class="ow">and</span> \
+</span></span><span class="line"><span class="cl">			<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">color_index</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="kt">null</span> <span class="ow">and</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">color_index</span> <span class="ow">and</span> \
+</span></span><span class="line"><span class="cl">			<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">color_index</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">_input</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="nc">InputEventScreenTouch</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="nf">is_pressed</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="n">first_touch</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">position</span>
+</span></span><span class="line"><span class="cl">			<span class="n">first_touch_on_grid</span> <span class="o">=</span> <span class="nf">pixel_to_grid</span><span class="p">(</span><span class="n">first_touch</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nf">is_in_grid</span><span class="p">(</span><span class="n">first_touch_on_grid</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			    <span class="n">controlling</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">!</span><span class="n">controlling</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="n">final_touch</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">position</span>
+</span></span><span class="line"><span class="cl">			<span class="n">final_touch_on_grid</span> <span class="o">=</span> <span class="nf">pixel_to_grid</span><span class="p">(</span><span class="n">final_touch</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nf">is_in_grid</span><span class="p">(</span><span class="n">final_touch_on_grid</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">				<span class="nf">swap_pieces</span><span class="p">(</span><span class="n">first_touch_on_grid</span><span class="p">,</span> <span class="n">final_touch_on_grid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="nf">find_matches</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">swap_pieces</span><span class="p">(</span><span class="n">grid_pos1</span><span class="p">,</span> <span class="n">grid_pos2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">first_piece</span> <span class="o">=</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">grid_pos1</span><span class="o">.</span><span class="n">x</span><span class="p">][</span><span class="n">grid_pos1</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">other_piece</span> <span class="o">=</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">grid_pos2</span><span class="o">.</span><span class="n">x</span><span class="p">][</span><span class="n">grid_pos2</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">first_piece</span> <span class="o">==</span> <span class="kt">null</span> <span class="ow">or</span> <span class="n">other_piece</span> <span class="o">==</span> <span class="kt">null</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span>
+</span></span><span class="line"><span class="cl">	<span class="n">all_pieces</span><span class="p">[</span><span class="n">grid_pos1</span><span class="o">.</span><span class="n">x</span><span class="p">][</span><span class="n">grid_pos1</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">other_piece</span>
+</span></span><span class="line"><span class="cl">	<span class="n">all_pieces</span><span class="p">[</span><span class="n">grid_pos2</span><span class="o">.</span><span class="n">x</span><span class="p">][</span><span class="n">grid_pos2</span><span class="o">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_piece</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">first_pos</span> <span class="o">=</span> <span class="n">first_piece</span><span class="o">.</span><span class="n">position</span>
+</span></span><span class="line"><span class="cl">	<span class="n">first_piece</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">other_piece</span><span class="o">.</span><span class="n">position</span>
+</span></span><span class="line"><span class="cl">	<span class="n">other_piece</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">first_pos</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">is_in_grid</span><span class="p">(</span><span class="n">grid_pos</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">grid_pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">grid_pos</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">width</span> <span class="ow">and</span> \
+</span></span><span class="line"><span class="cl">		<span class="n">grid_pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">grid_pos</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">height</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">pixel_to_grid</span><span class="p">(</span><span class="n">pixel_pos</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">new_col</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">pixel_pos</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_start</span><span class="p">)</span> <span class="o">/</span> <span class="n">offset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">new_row</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">pixel_pos</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_start</span><span class="p">)</span> <span class="o">/</span> <span class="o">-</span><span class="n">offset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nc">Vector2</span><span class="p">(</span><span class="n">new_col</span><span class="p">,</span> <span class="n">new_row</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">_ready</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">randomize</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="n">all_pieces</span> <span class="o">=</span> <span class="nf">make_2d_array</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">screen_size</span> <span class="o">=</span> <span class="nf">get_viewport</span><span class="p">()</span><span class="o">.</span><span class="nf">get_visible_rect</span><span class="p">()</span><span class="o">.</span><span class="n">size</span>
+</span></span><span class="line"><span class="cl">	<span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">screen_size</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">LEFT_OFFSET</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">width</span>
+</span></span><span class="line"><span class="cl">	<span class="n">piece_scale</span> <span class="o">=</span> <span class="n">offset</span> <span class="o">/</span> <span class="n">PIECE_IMAGE_SIZE</span>
+</span></span><span class="line"><span class="cl">	<span class="n">x_start</span> <span class="o">=</span> <span class="n">offset</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">LEFT_OFFSET</span>
+</span></span><span class="line"><span class="cl">	<span class="n">y_start</span> <span class="o">=</span> <span class="n">screen_size</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">offset</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">screen_size</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">offset</span> <span class="o">*</span> <span class="n">height</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">spawn_pieces</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">grid_to_pixel</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">new_x</span> <span class="o">=</span> <span class="n">x_start</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">*</span> <span class="n">col</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">new_y</span> <span class="o">=</span> <span class="n">y_start</span> <span class="o">+</span> <span class="o">-</span><span class="n">offset</span> <span class="o">*</span> <span class="n">row</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nc">Vector2</span><span class="p">(</span><span class="n">new_x</span><span class="p">,</span> <span class="n">new_y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">spawn_pieces</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">random_piece</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">random_piece</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">loops</span> <span class="o">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">rand</span> <span class="o">=</span> <span class="nb">randi</span><span class="p">()</span> <span class="o">%</span> <span class="n">number_of_pieces</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="nf">match_at</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">rand</span><span class="p">)</span> <span class="ow">and</span> <span class="n">loops</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="n">rand</span> <span class="o">=</span> <span class="nb">randi</span><span class="p">()</span> <span class="o">%</span> <span class="n">number_of_pieces</span>
+</span></span><span class="line"><span class="cl">		<span class="n">loops</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="n">piece</span> <span class="o">=</span> <span class="n">piece_loaded</span><span class="o">.</span><span class="nf">instance</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">add_child</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">piece</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="nf">grid_to_pixel</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">piece</span><span class="o">.</span><span class="n">color_index</span> <span class="o">=</span> <span class="n">rand</span>
+</span></span><span class="line"><span class="cl">	<span class="n">piece</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="nc">Vector2</span><span class="p">(</span><span class="n">piece_scale</span><span class="p">,</span> <span class="n">piece_scale</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">piece</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">rand</span>
+</span></span><span class="line"><span class="cl">	<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">piece</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">find_matches</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">matched</span> <span class="o">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">modulate</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="ow">and</span> \
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">					<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">matched</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">					<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">modulate</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="ow">and</span> \
+</span></span><span class="line"><span class="cl">				<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span> <span class="o">==</span> <span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">color_index</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">					<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">matched</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">					<span class="n">all_pieces</span><span class="p">[</span><span class="n">i</span> <span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="nf">get_node</span><span class="p">(</span><span class="s2">&#34;Sprite&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">modulate</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 3D Vitalii Shmorhun
+    </section>
+    
+    <section class="powerby">
+        Створено з <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Тема <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b>, дизайн <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.67243ff1e05977009808a4b6ae004a32f4ec34e461237fce122a38ba27e23203.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

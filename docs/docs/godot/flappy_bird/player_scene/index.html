@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="uk-ua" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Сцена гравця Отже, ми приступаємо до створення персонажу, котрим керуватиме гравець.\nМи його виділимо в окрему сцену. Для цього, натискаємо меню Scene -&gt; New Scene. Кореневим вузлом тут буде Rigid Bidy 2D. Це фізичний об&rsquo;єкт. Ми уже знайомі з одним з типів фізичних об&rsquo;єктів. Коли ми розробляли гру Pong то використовували вузли Area2D, які являються найпростішою формою фізичного об&rsquo;єкта. Все що вони мають, це певну форму, і реагують на перетин цієї форми іншими фізичними об&rsquo;єктами.\n">
+<title>2. Сцена гравця</title>
+
+<link rel='canonical' href='http://localhost:1313/docs/godot/flappy_bird/player_scene/'>
+
+<link rel="stylesheet" href="/scss/style.min.a140a7fca3575738060f7a824f5e106b01378b0be7d3a927f5d51eb4ace9636e.css"><meta property='og:title' content="2. Сцена гравця">
+<meta property='og:description' content="Сцена гравця Отже, ми приступаємо до створення персонажу, котрим керуватиме гравець.\nМи його виділимо в окрему сцену. Для цього, натискаємо меню Scene -&gt; New Scene. Кореневим вузлом тут буде Rigid Bidy 2D. Це фізичний об&rsquo;єкт. Ми уже знайомі з одним з типів фізичних об&rsquo;єктів. Коли ми розробляли гру Pong то використовували вузли Area2D, які являються найпростішою формою фізичного об&rsquo;єкта. Все що вони мають, це певну форму, і реагують на перетин цієї форми іншими фізичними об&rsquo;єктами.\n">
+<meta property='og:url' content='http://localhost:1313/docs/godot/flappy_bird/player_scene/'>
+<meta property='og:site_name' content='3D Vitalii Shmorhun'>
+<meta property='og:type' content='article'><meta property='article:section' content='Docs' />
+<meta name="twitter:title" content="2. Сцена гравця">
+<meta name="twitter:description" content="Сцена гравця Отже, ми приступаємо до створення персонажу, котрим керуватиме гравець.\nМи його виділимо в окрему сцену. Для цього, натискаємо меню Scene -&gt; New Scene. Кореневим вузлом тут буде Rigid Bidy 2D. Це фізичний об&rsquo;єкт. Ми уже знайомі з одним з типів фізичних об&rsquo;єктів. Коли ми розробляли гру Pong то використовували вузли Area2D, які являються найпростішою формою фізичного об&rsquo;єкта. Все що вони мають, це певну форму, і реагують на перетин цієї форми іншими фізичними об&rsquo;єктами.\n">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Показати меню">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <script src="/js/menu-toggle.js"></script>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_1aa41b581464c1d7.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🫨</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">3D Vitalii Shmorhun</a></h1>
+            <h2 class="site-description">Сам собі 3D-художник, аніматор та програміст</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://www.artstation.com/evilvitjoker'
+                        target="_blank"
+                        title="Artstation"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   fill="none"
+   stroke="currentColor"
+   stroke-width="2"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   class="icon icon-tabler icons-tabler-outline icon-tabler-brand-artstation"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="brand-artstation.svg"
+   xml:space="preserve"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs2" /><sodipodi:namedview
+     id="namedview2"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="17.958333"
+     inkscape:cx="10.385151"
+     inkscape:cy="17.095128"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" /><path
+     stroke="none"
+     d="M0 0h24v24H0z"
+     fill="none"
+     id="path1" /><path
+     id="path2"
+     d="m 9.8106368,2.9827896 10.3481442,17.9853764 1.80784,-3.1337 a 2.0046377,2.0046377 0 0 0 0.0017,-2.004012 L 15.13945,3.9957884 A 2.0078796,2.0078796 0 0 0 13.404329,2.9912454 Z M 8.105958,5.9135521 3.4688252,13.909308 H 12.74309 Z M 1.7641464,16.858673 3.5500004,19.934875 A 2.1718974,2.1718974 0 0 0 5.4288679,21.01721 H 16.833982 l -2.352389,-4.158537 z"
+     style="opacity:1" /></svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Acvarium/'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.instagram.com/vitshmorgun/'
+                        target="_blank"
+                        title="Instagram"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M16.5 7.5v.01" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://acvarium.itch.io/'
+                        target="_blank"
+                        title="itch.io"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-itch"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 7v1c0 1.087 1.078 2 2 2c1.107 0 2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2c.922 0 2 -.913 2 -2v-1c-.009 -.275 -.538 -.964 -1.588 -2.068a3 3 0 0 0 -2.174 -.932h-12.476a3 3 0 0 0 -2.174 .932c-1.05 1.104 -1.58 1.793 -1.588 2.068z" /><path d="M4 10c-.117 6.28 .154 9.765 .814 10.456c1.534 .367 4.355 .535 7.186 .536c2.83 -.001 5.652 -.169 7.186 -.536c.99 -1.037 .898 -9.559 .814 -10.456" /><path d="M10 16l2 -2l2 2" /><path d="M12 14v4" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/@fos_ua'
+                        target="_blank"
+                        title="Youtube"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path d="M10 9l5 3l-5 3z" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Домівка</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Архів</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Посилання</span>
+            </a>
+        </li>
+        
+        <div class="auto-menu-box">
+            
+            <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/">Основи Python</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%B7%D0%BC%D1%96%D0%BD%D0%BD%D1%96_%D1%82%D0%B0_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B8/">1. Змінні Та Оператори</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D1%82%D0%B8%D0%BF%D0%B8_%D0%B4%D0%B0%D0%BD%D0%B8%D1%85/">2. Типи Даних</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B0%D1%86%D1%96%D1%97_%D1%82%D0%B8%D0%BF%D1%96%D0%B2_%D0%B4%D0%B0%D0%BD%D0%B8%D1%85/">3. Перетворення Типів Даних</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D1%96%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%96%D1%81%D1%82%D1%8C/">4. Інтерактивність</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F/">5. Команди Управління</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/function/">6. Функції</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/">Базовий Курс Godot</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/">Pong</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/new_game/">1. Створення Нового Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/interface/">2. Інтерфейс Godot</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/nodes_and_scenes/">3. Вузли Та Сцени</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/paddle/">4. Перша Ракетка</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/paddle2/">5. Друга Ракетка</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/ball/">6. М&#39;яч</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/walls/">7. Стінки</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/pong/score/">8. Рахунок</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/gdscript/">GDScript</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/gdscript/example/">1. Приклад Коду</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/gdscript/key_words/">2. Ключові Слова</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/gdscript/operators/">3. Оператори</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/">Flappy Bird</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/game_setup/">1. Налаштування Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/player_scene/">2. Сцена Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/player_script/">3. Сценарій Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/animated_ground/">4. Анімація Землі</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/pipe_scene/">5. Труба</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/obstacle_scene/">6. Сцена Перешкоди</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/obstacle_generator/">7. Генератор Перешкод</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/obstacle_collision/">8. Зіткнення З Перешкодами</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/ground_collision/">9. Зіткнення З Землею</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/score/">10. Виведення Рахунку</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/game_over_panel/">11. Панель Game Over</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/flappy_bird/animated_skyline/">12. Анімований Фон</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/">Три В Ряд</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/01_project_setup/">1. Налаштування Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/02_piece/">2. Спочатку Було Яйце</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/03_grid/">3. Сітка Елементів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/04_random_and_structure/">4. Випадковість Та Структура</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/05_fair_game/">5. Чесна Гра</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/06_slide_pieces/">6. Переміщення Елементів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/07_find_match/">7. Пошук Збігів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/08_delete_match/">8. Видалення Збігів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/09_collaps/">9. Колапс В Порожні</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/10_replace_empty/">10. Заповнення Порожніх</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/11_tween_animations/">11. Анімаційні Ефекти</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/12_highlight/">12. Підсвітка Та Фон</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/13_limit_movement/">13. Обмеження Руху</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/14_swap_back/">14. Крок Вперед, Крок Назад</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/15_block_player_moves/">15. Блокування Рухів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/16_score/">16. Рахунок</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/17_restart/">17. Рестарт Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/match3/18_resaurces/">18. Додаткові Ресурси</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/homework_project01/">Самостійна Робота</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/01_sandbox/">1. Пісочниця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/02_material_basis/">2. Основи Матеріалів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/03_fps_player/">3. Гравець Від Першого Лиця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/04_player_walk/">4. Крокуємо Вперед</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/05_walls/">5. Стіни</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/06_main_menu/">6. Головне Меню Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/07_global/">7. &#34;Global&#34; Та AutoLoad</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/08_level_loader/">8. Завантаження Рівнів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/09_back_to_main_menu/">9. Повернення В Головне Меню</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/10_doors/">10. Двері</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/11_keys/">11. Ключі</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/3d_maze/12_level_end/">12. Завершення Рівня</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/010_introduction/">1. Знайомство З Проектом</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/020_point_and_click/">2. Куди Вказує Курсор</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/030_camera_movement/">3. Рух Камери</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/040_animated_character/">4. Анімований Персонаж</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/050_pickable/">5. Піднімання Предметів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/060_store_picked/">6. Інвентар</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/070_effect_spawner/">7. Ефекти Та Звуки</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/080_mushroom/">8. Гриби</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/090_spawn_mushroom/">9. Генерація Грибів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/100_forest/">10. Ліс</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/110_save_game/">11. Збереження Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/120_load_game/">12. Завантаження Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/mushroom_forest/130_save_items/">13. Збереження Інвентарю</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/2d_platformer/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/2d_platformer/010_first_setup/">1. Базові Налаштування</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/2d_platformer/020_player/">2. Код Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/2d_platformer/030_character_animation/">3. Анімація Персонажу</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/2d_platformer/040_attrack/">4. Атака Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/2d_platformer/060_enemy_attack/">6. Противник. Атака</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot/2d_platformer/070_attack_from_above/">7. Атака Згори</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+</ul>
+
+            
+        </div>
+        
+    </ol>
+</aside>
+
+    
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/docs/godot/flappy_bird/player_scene/">2. Сцена гравця</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Час читання: 6 хв
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="сцена-гравця">Сцена гравця
+</h1><p>Отже, ми приступаємо до створення персонажу, котрим керуватиме гравець.</p>
+<p>Ми його виділимо в окрему сцену. Для цього, натискаємо меню <code>Scene</code> -&gt; <code>New Scene</code>. Кореневим вузлом тут буде <code>Rigid Bidy 2D</code>. Це фізичний об&rsquo;єкт. Ми уже знайомі з одним з типів фізичних об&rsquo;єктів. Коли ми розробляли гру <code>Pong</code> то використовували вузли <code>Area2D</code>, які являються найпростішою формою фізичного об&rsquo;єкта. Все що вони мають, це певну форму, і реагують на перетин цієї форми іншими фізичними об&rsquo;єктами.</p>
+<p>Сьогодні ж ми будемо працювати з другим типом, що називається <code>Rigid Body 2D</code>. Це саме те, що можна уявити, якщо думати про фізичний об&rsquo;єкт. Він має форму, на нього діє гравітація, а отже, він падає. Він характеризується тертям, згасанням руху, для дуже спрощеної підміни тертя повітря, його можна налаштувати відбиватись від поверхні і тому подібне. Одна важлива річ, яку треба тримати в голові, коли ми маємо справу з подібним об&rsquo;єктом, це те, що його не можна напряму переміщати з коду, як ми робили з дощечками для <code>Pong</code>. Тобто, вам не дозволено змінювати його координати. Єдине, що вам дозволяється у випадку з <code>Rigid Body</code>, це надати об&rsquo;єкту імпульс в якомусь напрямку, чи якимось іншим чином прикладати силу.</p>
+<p>Сьогодні ми також використаємо вузол під назвою <code>Static Body 2D</code>. Як випливає з імені, це статичний об&rsquo;єкт, вся робота якого, бути на одному місці і мати певну форму. Подібні об&rsquo;єкти формують статичні перешкоди, як то землю чи стіни рівня. Але це саме статичні перешкоди. Хоч ви і можете переміщати з коду чи анімацією подібні об&rsquo;єкти, цього потрібно уникати. Такі переміщення можуть викликати неочікувану поведінку, тому що фізична система є сильно оптимізованою, і не передбачає рух таких об&rsquo;єктів</p>
+<p>Також є ще один важливий тип фізичних об&rsquo;єктів, з яким ми познайомимось пізніше. Він називається <code>Kinematic Body</code>. Вузли такого типу є під повним контролем програміста. Ви визначаєте в коді все, що стосується його поведінки і в цьому випадку можете рухати його як заманеться. Але додатково вам надається доступ до функцій, що опрацьовують зіткнення з поверхнями різним чином. Але про це ми поговоримо пізніше, в іншому проекті.</p>
+<p>Отже, у нас є нова сцена поки без жодного вузла. В короткому списку меню немає необхідного. Натискаємо Other Node та шукаємо <code>RigidBidy2D</code>. Перейменуємо його в <code>Player</code>. Знак оклику нам нагадує, що потрібно додати колайдер. Додаємо новий вузол <code>CollisionShape2D</code>. Як форму в інспекторі справа обираємо коло. Радіус ми зараз поправимо, коли додамо і визначимось з розміром спрайта.</p>
+<div class="video-wrapper">
+    <video
+    controls
+    src="FlappyNewPlayerScene"
+    
+    autoplay
+    >
+        <p>
+            Your browser doesn't support HTML5 video. Here is a
+            <a href="FlappyNewPlayerScene">link to the video</a> instead.
+        </p>
+    </video>
+</div>
+
+<p>До вузла <code>Player</code> додаємо ще один. Цього разу <code>Sprite</code>. Серед спрайтів шукаємо той, що має назву <code>bird</code> та затягуємо в поле <code>Texture</code> в інспекторі. Як бачите, тут відразу 2 кадри які ми використаємо для анімації. Але поки, розгортаємо розділ <code>Animation</code> в інспекторі та змінюємо значення <code>Hframes</code>, тобто кількість кадрів по горизонталі, на 2. Наша птаха трохи завелика. Вона займає велику частину ігрового екрану. Переходимо в розділ <code>Transform</code> та змінюємо обидва значення <code>scale</code> <code>x</code> та <code>y</code> на величину 0.25. Тепер ми можемо повернутись до розміру колайдера. Поміняйте їх місцями в ієрархії сцени, щоб зручніше було підганяти розмір колайдера за коліщатко справа. Як бачимо, спрайт пташки ще трохи зміщений вправо. Виділяємо спрайт і стрілками на клавіатурі рухаємо трохи вліво. Те що частина зображення птаха виходить за межі колайдера, це не суттєво в подібній грі. Та і гравцю треба давати трошки простору на помилку.</p>
+<div class="video-wrapper">
+    <video
+    controls
+    src="FlappyPlayerSprite"
+    
+    autoplay
+    >
+        <p>
+            Your browser doesn't support HTML5 video. Here is a
+            <a href="FlappyPlayerSprite">link to the video</a> instead.
+        </p>
+    </video>
+</div>
+
+<p>Збережемо нашу сцену. Для цього створимо новий каталог під назвою <code>Characters</code>. Це дозволить вам в майбутньому розширити гру, додавши кілька персонажів на вибір для гравця. Зберігаємо під тією ж назвою, <code>Player</code>.</p>
+<p>Далі ми будемо робити анімацію персонажа. Перша буде відтворюватись доти, поки гравець не розпочне гру. Птах буде злегка коливатись на місці. Друга ж анімація буде відтворюватись вже під час гри. Птах буде рухати крилами.</p>
+<p>Отже, для того, щоб мати анімацію в грі, нам потрібен вузол <code>AnimationPlayer</code>. Додамо його як дочірній до вузла Player. Коли його виділено, ми бачимо новий тип вікна, внизу. Це інструмент для створення і редагування анімації. Натискаємо <code>Animation</code> -&gt; <code>New</code> та називаємо першу анімацію <code>idle</code>, що означає бездіяння. Вона буде мати тривалість 1 секунду, що можна визначити справа. Вона має бути циклічною, вмикаємо кнопочку правіше. Також вона має відтворюватись автоматично відразу як розпочато гру. Для цього натискаємо кнопочку з літерою <code>A</code>.</p>
+<div class="video-wrapper">
+    <video
+    controls
+    src="FlappyNewAnimationPlayer"
+    
+    autoplay
+    >
+        <p>
+            Your browser doesn't support HTML5 video. Here is a
+            <a href="FlappyNewAnimationPlayer">link to the video</a> instead.
+        </p>
+    </video>
+</div>
+
+<p>Створимо перший кадр. Бігунок часу має бути в нулі. Виділяємо спрайт. Стрілками клавіатури рухаємо його трохи вниз. Тепер в полі <code>Transform</code> натискаємо ключик навпроти параметру <code>Position</code>. Він запитає, чи створити нову доріжку анімації і чи створити доріжку в анімації Reset. Натискаємо Create. Зверніть увагу, що ключик навпроти параметра не завжди присутній. Він з&rsquo;являється після того, як ми виділили <code>AnimationPlayer</code> з анімацією на редагування.</p>
+<p>Наступний кадр буде на позиції 0.5. Пересуваємо бігунок. Знову переконуємось, що спрайт виділено та стрілкою перемістимо його вгору трохи вище позиції спокою. Створюємо новий ключ анімації, натиснувши на ключик навпроти <code>Position</code>. У нас є перша анімація. Щоб відтворити її, в вікні анімації натискаємо клавішу відтворення.</p>
+<div class="video-wrapper">
+    <video
+    controls
+    src="FlappyIdleAnimation"
+    
+    autoplay
+    >
+        <p>
+            Your browser doesn't support HTML5 video. Here is a
+            <a href="FlappyIdleAnimation">link to the video</a> instead.
+        </p>
+    </video>
+</div>
+
+<p>Приступаємо до другої анімації. Ця буде відтворюватись циклічно впродовж всієї гри. Вона буде відображати рух крил пташки. Для цього, як ви пам&rsquo;ятаєте, спрайт має два кадри. Тож, ми будемо їх перемикати. Знову створюємо нову анімацію, натискаючи <code>Animation</code> -&gt; <code>New</code> та називаємо її <code>flap</code>. Справа вмикаємо циклічність та поряд міняємо довжину на 0.2 секунди. Переконуємось, що бігунок часу на відмітці 0. Виділяємо спрайт та в розділі <code>Animation</code> шукаємо значення <code>Frame</code>. Виставляємо ключик та створюємо нову доріжку. Пересуваємо бігунок часу на 0.1. Змінюємо значення <code>Frame</code> для спрайта на 1 та знову додаємо ключ. Зараз ми вже можемо відтворити анімацію. Але це ще не кінець роботи в цьому вікні.
+Кожна з наших анімацій змінює свій тип величин. Перша впливає на позицію, друга на кадр. Відповідно може бути випадок, коли позицію зміщено першою анімацією і ми перейшли в другу. Але друга ніяк не виправила ситуацію, тож наш птах залишиться зміщеним відносно колайдера, що, з точки зору гравця, ускладнює ігровий процес. Гравець вже не знатиме коректної позиції і зіткнення для нього будуть відбуватись дивним чином.
+Це потрібно поправити. Для цього достатньо для початку в анімації <code>flap</code> виставити спрайт в правильну позицію і створити новий кадр для значення <code>position</code> на відмітці часу 0.
+Таке ж саме зробимо для значення <code>frame</code> в анімації <code>idle</code>. Повертаємо в 0, та створюємо кадр.</p>
+<div class="video-wrapper">
+    <video
+    controls
+    src="FlappyFlapAnimation"
+    
+    autoplay
+    >
+        <p>
+            Your browser doesn't support HTML5 video. Here is a
+            <a href="FlappyFlapAnimation">link to the video</a> instead.
+        </p>
+    </video>
+</div>
+
+<p>Зараз можемо зберегти зміни, що ми зробили в сцені та рухаємось далі.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 3D Vitalii Shmorhun
+    </section>
+    
+    <section class="powerby">
+        Створено з <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Тема <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b>, дизайн <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.67243ff1e05977009808a4b6ae004a32f4ec34e461237fce122a38ba27e23203.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

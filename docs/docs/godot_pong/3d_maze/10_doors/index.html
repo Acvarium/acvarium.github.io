@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="uk-ua" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Двері Поки ми мали лише пасивні елементи в грі, тобто, стіни. Пора додати двері.\nСтворюємо нову сцену та обираємо для неї 3D Scene. Перейменовуємо кореневий вузол на Door та зберігаємо в нову директорію під назвою Objects. Сюди ми будемо зберігати усілякі активні об&rsquo;єкти, як то ключі до дверей. До вузла Door додаємо MeshInstance та обираємо CubeMesh. Як ми робили для стін, розмір по осі y виставляємо в 6. Це будуть не двері, в їх традиційному розумінні, це буде величезний камінь, відкривання якого буде відбуватись опусканням цього каменя під землю. Він має перегороджувати шлях для гравця, тому потребує фізичного представлення. При вибраному вузлі MeshInstance, шукаємо посередині над вікном перегляду меню Mesh, де обираємо перший пункт Create Trimesh From Body. Також можете додати матеріал до вузла MeshInstance та змінити йому колір. Так як згенерований вузол StaticBody буде рухатись анімацією, а статичні фізичні об&rsquo;єкти не варто рухати, конвертуємо його в KinematicBody. Для цього натискаємо на нього правою клавішею в ієрархії сцени, та обираємо Change Type. Зі списку обираємо KinematicBody.\n">
+<title>10. Двері</title>
+
+<link rel='canonical' href='http://localhost:1313/docs/godot_pong/3d_maze/10_doors/'>
+
+<link rel="stylesheet" href="/scss/style.min.8886f9dd038c8a477d4f75f0b0af50ed278e9a067c557fff3f468670616bda14.css"><meta property='og:title' content="10. Двері">
+<meta property='og:description' content="Двері Поки ми мали лише пасивні елементи в грі, тобто, стіни. Пора додати двері.\nСтворюємо нову сцену та обираємо для неї 3D Scene. Перейменовуємо кореневий вузол на Door та зберігаємо в нову директорію під назвою Objects. Сюди ми будемо зберігати усілякі активні об&rsquo;єкти, як то ключі до дверей. До вузла Door додаємо MeshInstance та обираємо CubeMesh. Як ми робили для стін, розмір по осі y виставляємо в 6. Це будуть не двері, в їх традиційному розумінні, це буде величезний камінь, відкривання якого буде відбуватись опусканням цього каменя під землю. Він має перегороджувати шлях для гравця, тому потребує фізичного представлення. При вибраному вузлі MeshInstance, шукаємо посередині над вікном перегляду меню Mesh, де обираємо перший пункт Create Trimesh From Body. Також можете додати матеріал до вузла MeshInstance та змінити йому колір. Так як згенерований вузол StaticBody буде рухатись анімацією, а статичні фізичні об&rsquo;єкти не варто рухати, конвертуємо його в KinematicBody. Для цього натискаємо на нього правою клавішею в ієрархії сцени, та обираємо Change Type. Зі списку обираємо KinematicBody.\n">
+<meta property='og:url' content='http://localhost:1313/docs/godot_pong/3d_maze/10_doors/'>
+<meta property='og:site_name' content='3D Vitalii Shmorhun'>
+<meta property='og:type' content='article'><meta property='article:section' content='Docs' />
+<meta name="twitter:title" content="10. Двері">
+<meta name="twitter:description" content="Двері Поки ми мали лише пасивні елементи в грі, тобто, стіни. Пора додати двері.\nСтворюємо нову сцену та обираємо для неї 3D Scene. Перейменовуємо кореневий вузол на Door та зберігаємо в нову директорію під назвою Objects. Сюди ми будемо зберігати усілякі активні об&rsquo;єкти, як то ключі до дверей. До вузла Door додаємо MeshInstance та обираємо CubeMesh. Як ми робили для стін, розмір по осі y виставляємо в 6. Це будуть не двері, в їх традиційному розумінні, це буде величезний камінь, відкривання якого буде відбуватись опусканням цього каменя під землю. Він має перегороджувати шлях для гравця, тому потребує фізичного представлення. При вибраному вузлі MeshInstance, шукаємо посередині над вікном перегляду меню Mesh, де обираємо перший пункт Create Trimesh From Body. Також можете додати матеріал до вузла MeshInstance та змінити йому колір. Так як згенерований вузол StaticBody буде рухатись анімацією, а статичні фізичні об&rsquo;єкти не варто рухати, конвертуємо його в KinematicBody. Для цього натискаємо на нього правою клавішею в ієрархії сцени, та обираємо Change Type. Зі списку обираємо KinematicBody.\n">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Показати меню">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <script src="/js/menu-toggle.js"></script>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_1aa41b581464c1d7.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🫨</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">3D Vitalii Shmorhun</a></h1>
+            <h2 class="site-description">Сам собі 3D-художник, аніматор та програміст</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://www.artstation.com/evilvitjoker'
+                        target="_blank"
+                        title="Artstation"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   fill="none"
+   stroke="currentColor"
+   stroke-width="2"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   class="icon icon-tabler icons-tabler-outline icon-tabler-brand-artstation"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="brand-artstation.svg"
+   xml:space="preserve"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs2" /><sodipodi:namedview
+     id="namedview2"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="17.958333"
+     inkscape:cx="10.385151"
+     inkscape:cy="17.095128"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" /><path
+     stroke="none"
+     d="M0 0h24v24H0z"
+     fill="none"
+     id="path1" /><path
+     id="path2"
+     d="m 9.8106368,2.9827896 10.3481442,17.9853764 1.80784,-3.1337 a 2.0046377,2.0046377 0 0 0 0.0017,-2.004012 L 15.13945,3.9957884 A 2.0078796,2.0078796 0 0 0 13.404329,2.9912454 Z M 8.105958,5.9135521 3.4688252,13.909308 H 12.74309 Z M 1.7641464,16.858673 3.5500004,19.934875 A 2.1718974,2.1718974 0 0 0 5.4288679,21.01721 H 16.833982 l -2.352389,-4.158537 z"
+     style="opacity:1" /></svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Acvarium/'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.instagram.com/vitshmorgun/'
+                        target="_blank"
+                        title="Instagram"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M16.5 7.5v.01" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://acvarium.itch.io/'
+                        target="_blank"
+                        title="itch.io"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-itch"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 7v1c0 1.087 1.078 2 2 2c1.107 0 2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2c.922 0 2 -.913 2 -2v-1c-.009 -.275 -.538 -.964 -1.588 -2.068a3 3 0 0 0 -2.174 -.932h-12.476a3 3 0 0 0 -2.174 .932c-1.05 1.104 -1.58 1.793 -1.588 2.068z" /><path d="M4 10c-.117 6.28 .154 9.765 .814 10.456c1.534 .367 4.355 .535 7.186 .536c2.83 -.001 5.652 -.169 7.186 -.536c.99 -1.037 .898 -9.559 .814 -10.456" /><path d="M10 16l2 -2l2 2" /><path d="M12 14v4" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/@fos_ua'
+                        target="_blank"
+                        title="Youtube"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path d="M10 9l5 3l-5 3z" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Домівка</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Архів</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Посилання</span>
+            </a>
+        </li>
+        
+        <div class="auto-menu-box">
+            
+            <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/">Основи Python</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%B7%D0%BC%D1%96%D0%BD%D0%BD%D1%96_%D1%82%D0%B0_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B8/">1. Змінні Та Оператори</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D1%82%D0%B8%D0%BF%D0%B8_%D0%B4%D0%B0%D0%BD%D0%B8%D1%85/">2. Типи Даних</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B0%D1%86%D1%96%D1%97_%D1%82%D0%B8%D0%BF%D1%96%D0%B2_%D0%B4%D0%B0%D0%BD%D0%B8%D1%85/">3. Перетворення Типів Даних</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D1%96%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%96%D1%81%D1%82%D1%8C/">4. Інтерактивність</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%96%D0%BD%D0%BD%D1%8F/">5. Команди Управління</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/python/function/">6. Функції</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/">Базовий Курс Godot</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/">Pong</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/new_game/">1. Створення Нового Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/interface/">2. Інтерфейс Godot</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/nodes_and_scenes/">3. Вузли Та Сцени</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/paddle/">4. Перша Ракетка</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/paddle2/">5. Друга Ракетка</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/ball/">6. М&#39;яч</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/walls/">7. Стінки</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/pong/score/">8. Рахунок</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/gdscript/">GDScript</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/gdscript/example/">1. Приклад Коду</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/gdscript/key_words/">2. Ключові Слова</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/gdscript/operators/">3. Оператори</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/">Flappy Bird</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/game_setup/">1. Налаштування Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/player_scene/">2. Сцена Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/player_script/">3. Сценарій Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/animated_ground/">4. Анімація Землі</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/pipe_scene/">5. Труба</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/obstacle_scene/">6. Сцена Перешкоди</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/obstacle_generator/">7. Генератор Перешкод</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/obstacle_collision/">8. Зіткнення З Перешкодами</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/ground_collision/">9. Зіткнення З Землею</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/score/">10. Виведення Рахунку</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/game_over_panel/">11. Панель Game Over</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/flappy_bird/animated_skyline/">12. Анімований Фон</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/">Три В Ряд</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/01_project_setup/">1. Налаштування Проекту</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/02_piece/">2. Спочатку Було Яйце</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/03_grid/">3. Сітка Елементів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/04_random_and_structure/">4. Випадковість Та Структура</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/05_fair_game/">5. Чесна Гра</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/06_slide_pieces/">6. Переміщення Елементів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/07_find_match/">7. Пошук Збігів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/08_delete_match/">8. Видалення Збігів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/09_collaps/">9. Колапс В Порожні</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/10_replace_empty/">10. Заповнення Порожніх</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/11_tween_animations/">11. Анімаційні Ефекти</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/12_highlight/">12. Підсвітка Та Фон</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/13_limit_movement/">13. Обмеження Руху</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/14_swap_back/">14. Крок Вперед, Крок Назад</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/15_block_player_moves/">15. Блокування Рухів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/16_score/">16. Рахунок</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/17_restart/">17. Рестарт Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/match3/18_resaurces/">18. Додаткові Ресурси</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/homework_project01/">Самостійна Робота</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/01_sandbox/">1. Пісочниця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/02_material_basis/">2. Основи Матеріалів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/03_fps_player/">3. Гравець Від Першого Лиця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/04_player_walk/">4. Крокуємо Вперед</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/05_walls/">5. Стіни</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/06_main_menu/">6. Головне Меню Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/07_global/">7. &#34;Global&#34; Та AutoLoad</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/08_level_loader/">8. Завантаження Рівнів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/09_back_to_main_menu/">9. Повернення В Головне Меню</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/10_doors/">10. Двері</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/11_keys/">11. Ключі</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/3d_maze/12_level_end/">12. Завершення Рівня</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/010_introduction/">1. Знайомство З Проектом</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/020_point_and_click/">2. Куди Вказує Курсор</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/030_camera_movement/">3. Рух Камери</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/040_animated_character/">4. Анімований Персонаж</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/050_pickable/">5. Піднімання Предметів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/060_store_picked/">6. Інвентар</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/070_effect_spawner/">7. Ефекти Та Звуки</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/080_mushroom/">8. Гриби</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/090_spawn_mushroom/">9. Генерація Грибів</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/100_forest/">10. Ліс</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/110_save_game/">11. Збереження Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/120_load_game/">12. Завантаження Гри</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/mushroom_forest/130_save_items/">13. Збереження Інвентарю</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/">_Index.md</a>
+      
+        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+      
+    </div>
+    
+      <ul class="submenu">
+        <ul class="auto-menu">
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/010_first_setup/">1. Базові Налаштування</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/020_player/">2. Код Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/030_character_animation/">3. Анімація Персонажу</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/040_attrack/">4. Атака Гравця</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/060_enemy_attack/">6. Противник. Атака</a>
+      
+    </div>
+    
+  </li>
+  
+  <li class="">
+    
+    <div class="menu-item">
+      <a href="/docs/godot_pong/2d_platformer/070_attack_from_above/">7. Атака Згори</a>
+      
+    </div>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+</ul>
+
+      </ul>
+    
+  </li>
+  
+</ul>
+
+            
+        </div>
+        
+    </ol>
+</aside>
+
+    
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/docs/godot_pong/3d_maze/10_doors/">10. Двері</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Час читання: 4 хв
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="двері">Двері
+</h1><p>Поки ми мали лише пасивні елементи в грі, тобто, стіни. Пора додати двері.</p>
+<p>Створюємо нову сцену та обираємо для неї <code>3D Scene</code>. Перейменовуємо кореневий вузол на <code>Door</code> та зберігаємо в нову директорію під назвою <code>Objects</code>. Сюди ми будемо зберігати усілякі активні об&rsquo;єкти, як то ключі до дверей. До вузла <code>Door</code> додаємо <code>MeshInstance</code> та обираємо <code>CubeMesh</code>. Як ми робили для стін, розмір по осі <code>y</code> виставляємо в 6. Це будуть не двері, в їх традиційному розумінні, це буде величезний камінь, відкривання якого буде відбуватись опусканням цього каменя під землю.
+Він має перегороджувати шлях для гравця, тому потребує фізичного представлення. При вибраному вузлі <code>MeshInstance</code>, шукаємо посередині над вікном перегляду меню <code>Mesh</code>, де обираємо перший пункт <code>Create Trimesh From Body</code>. Також можете додати матеріал до вузла <code>MeshInstance</code> та змінити йому колір. Так як згенерований вузол <code>StaticBody</code> буде рухатись анімацією, а статичні фізичні об&rsquo;єкти не варто рухати, конвертуємо його в <code>KinematicBody</code>. Для цього натискаємо на нього правою клавішею в ієрархії сцени, та обираємо <code>Change Type</code>. Зі списку обираємо <code>KinematicBody</code>.</p>
+<p>Повернемось до вузла <code>Door</code> та додамо до нього <code>AnimationPlayer</code>. Створюємо нову анімацію під назвою <code>Open</code>. Обираємо вузол <code>MeshInstance</code> та ставимо перший ключ для <code>Translation</code> в розділі <code>Transform</code> інспектору. Тоді переводимо бігунок часу в кінець, на відмітку 1 секунда, а тоді у все тім же <code>Translate</code> для вузла <code>MeshInstance</code> по осі <code>y</code> виставляємо в <code>-2.9</code> та ставимо ключ. Так після анімації цей камінь-двері, буде відкриватись трошки не до кінця, і ми усе ще будемо бачити, де ці двері, та зможемо їх закрити.</p>
+<p>Активація дверей зі сторони гравця буде реалізована через пускання променя в напрямку погляду, щоб ми знали, що перед нами саме двері. Тому в момент, коли двері повністю опущено, нам буде важко їх назад закрити. Для того, щоб вирішити цю проблему, додамо до вузла <code>Door</code> новий <code>Area</code>, а тоді до нього <code>CollisionShape</code>. Для параметру <code>Shape</code> обираємо <code>BoxShape</code>, клацаємо на нього, щоб відредагувати форму, та для <code>Extends</code> змінюємо розміри на <code>x = 1.1, y = 3, z = 1.1</code>. Так цей об&rsquo;єкт трохи виходитиме поза колайдер самого блоку, і зіткнення з ним буде легше виявити.</p>
+<p>Тепер додаємо до вузла <code>Door</code> код. Спочатку одну глобальну змінну:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="n">export</span> <span class="kd">var</span> <span class="n">door_open</span> <span class="o">=</span> <span class="kc">false</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Ключове слово <code>export</code> перед оголошенням змінної означає, що вона має бути доступна в інспекторі. Так ми зможемо під час редагування рівня вказати, які з дверей мають уже бути відкриті, а які ні.</p>
+<p>Додамо ще кілька функцій:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">toggle_door</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">open_door</span><span class="p">(</span><span class="o">!</span><span class="n">door_open</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">open_door</span><span class="p">(</span><span class="n">to_open</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">to_open</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">$AnimationPlayer</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="s2">&#34;open&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">door_open</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">$AnimationPlayer</span><span class="o">.</span><span class="nf">play_backwards</span><span class="p">(</span><span class="s2">&#34;open&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">door_open</span> <span class="o">=</span> <span class="kc">false</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Друга функція приймає значення <code>true</code> або <code>false</code>, де <code>true</code> - це відкривання дверей, а <code>false</code> - це, відповідно, закривання. На відкривання відтворюється наша анімація. А на закривання, усе та сама анімація, тільки в зворотному напрямку.</p>
+<p>Перша з функцій, це такий собі перемикач. По її виклику, якщо двері були закриті, вони відкриються. Якщо ж відкриті, то закриються.</p>
+<p>Також додамо функцію <code>_ready()</code> з таким рядком:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">_ready</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">open_door</span><span class="p">(</span><span class="n">door_open</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Відповідно якщо ми в редакторі змінимо значення для змінної, так щоб двері були відразу відкриті, тоді вони відкриються відразу на початку гри.</p>
+<p>Тепер повернемось до сцени <code>Main</code> та ще на хвилинку зайдемо в налаштування проекту, щоб додати ще одну подію вводу. Відкриваємо <code>Project</code> -&gt; <code>Project Settings</code>. Там на вкладці <code>Input Map</code> додаємо подію яку так і назвемо <code>action</code>. На подію причепимо натискання клавіші <code>e</code>. Вона у нас буде відповідати за різні узагальнені речі, як активація важелів, чи відкривання усе тих же дверей. Закриваємо вікно налаштування, та в сцені <code>Main</code> перемикаємо у відображення <code>3D</code>. Знайдіть об&rsquo;єкт <code>Camera</code> він всередині голови гравця. До вузла <code>Camera</code> додаємо новий <code>RayCast</code>. Його перейменовуємо на <code>ActionCast</code>. В інспекторі для нього відзначаємо <code>Enabled</code>.</p>
+<p>Також розгорніть в інспекторі розділ <code>Collide With</code> та відмітьте <code>Areas</code>. Це означатиме, що промінь взаємодіятиме також з об&rsquo;єктами класу <code>Area</code>, що нам і треба.</p>
+<p>Поки цей промінь напрямлений не в ту сторону, що ми б хотіли. Тому змінюємо значення <code>Cast To</code> на <code>x = 0, y = 0, z = -3</code>. Так ми зможемо виявити двері на 3 метри попереду в напрямку погляду гравця.</p>
+<p>Далі переходимо до коду гравця. Переходимо до функції <code>_ready()</code>, або створюємо, якщо її досі немає. Там додаємо один рядок:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl"><span class="nx">$Head/Camera/ActionCast</span><span class="o">.</span><span class="nf">add_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Цим рядком ми вказуємо, виключити зі списку колізій з променем самого гравця.
+Тоді переходимо до функції <code>_input(event)</code> та додаємо таке:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-GDScript" data-lang="GDScript"><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="nf">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;action&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">$Head/Camera/ActionCast</span><span class="o">.</span><span class="nf">force_raycast_update</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">$Head/Camera/ActionCast</span><span class="o">.</span><span class="nf">is_colliding</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="n">coll</span> <span class="o">=</span> <span class="nx">$Head/Camera/ActionCast</span><span class="o">.</span><span class="nf">get_collider</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">coll</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">if</span> <span class="n">coll</span><span class="o">.</span><span class="nf">get_parent</span><span class="p">()</span><span class="o">.</span><span class="nf">has_method</span><span class="p">(</span><span class="s2">&#34;toggle_door&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">					<span class="n">coll</span><span class="o">.</span><span class="nf">get_parent</span><span class="p">()</span><span class="o">.</span><span class="nf">toggle_door</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Тут ми маємо, якщо натиснуто подія, яку ми назвали <code>action</code>, тоді ми примушуємо промінь оновити взаємодії. Після цього перевіряємо, чи промінь з чимось зіткнувся. Якщо ж це так, тоді з даних про зіткнення витягуємо посилання на об&rsquo;єкт, з яким відбулось зіткнення. У цього об&rsquo;єкта дізнаємось, хто його батьківський, адже код про відкривання дверей прикріплено не на об&rsquo;єкті <code>Area</code> а на дверях, які є батьківським для <code>Area</code>. Дізнаємось, чи цей батьківський має метод <code>toggle_door</code>. Якщо ж так, тоді викликаємо цей метод.</p>
+<p>Вставте в сцену <code>Main</code> у вузол <code>Level</code> об&rsquo;єкт дверей, десь неподалік від гравця та випробуйте те, що ми щойно написали.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 3D Vitalii Shmorhun
+    </section>
+    
+    <section class="powerby">
+        Створено з <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Тема <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b>, дизайн <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.67243ff1e05977009808a4b6ae004a32f4ec34e461237fce122a38ba27e23203.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

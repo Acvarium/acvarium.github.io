@@ -1,0 +1,22 @@
+# Change baseurl before deploy
+theme = "stack"
+baseurl = "https://3dvit.in.ua"
+languageCode = "uk-ua"
+title = "3D Vitalii Shmorhun"
+publishDir = "docs"
+# Theme i18n support
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
+defaultContentLanguage = "uk"
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage = false
+
+# Change it to your Disqus shortname before using
+disqusShortname = "vitalii-shmorhun"
+
+[pagination]
+pagerSize = 5
+
+[params]
+  BookSection = "docs"

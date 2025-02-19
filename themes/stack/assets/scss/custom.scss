@@ -1,0 +1,50 @@
+.toggle-btn {
+  margin-left: auto; // Відсуває кнопку вліво до краю контейнера
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.toggle-btn.open {
+  transform: rotate(-90deg);
+}
+.auto-menu-box {
+    display: block; /* або inline-block */
+    width: 100%;
+    padding-right: 10px;
+}
+
+.root-item {
+    padding-left: 0px;
+    display: block; /* або inline-block */
+    width: 100%;
+    padding-bottom: 8px;
+}
+.auto-menu {
+  width: 100%;
+  
+  li {
+    margin-bottom: 8px; // Відступ між усіма елементами
+  }
+	.menu-item {
+      font-size: larger;
+	  font-weight: bold; 
+      font-style: italic;
+	  display: flex;
+	  align-items: left; // Вирівнює елементи по вертикалі
+	  justify-content: space-between; // Розподіляє текст і кнопку по краях
+	}
+	
+	.submenu {
+	    padding-left: 15px;
+        font-weight: normal; 
+        font-size: small;
+        font-style: italic;
+        margin-bottom: 5px;
+        list-style: disc;
+
+
+	}
+}
+
