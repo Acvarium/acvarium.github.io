@@ -4,6 +4,7 @@
   border: none;
   cursor: pointer;
   padding: 5px;
+  color: var(--accent-color-darker);
 }
 
 .toggle-btn.open {
@@ -43,8 +44,7 @@
         font-style: italic;
         margin-bottom: 5px;
         list-style: disc;
-
-
+        color: var(--accent-color-darker);
 	}
 }
 

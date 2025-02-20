@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Основи Python on 3D Vitalii Shmorhun</title>
-        <link>http://localhost:1313/docs/python/</link>
+        <link>https://3dvit.in.ua/docs/python/</link>
         <description>Recent content in Основи Python on 3D Vitalii Shmorhun</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>uk-ua</language><atom:link href="http://localhost:1313/docs/python/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>uk-ua</language><atom:link href="https://3dvit.in.ua/docs/python/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>1. Змінні та оператори</title>
-        <link>http://localhost:1313/docs/python/var/</link>
+        <link>https://3dvit.in.ua/docs/python/var/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/var/</guid>
+        <guid>https://3dvit.in.ua/docs/python/var/</guid>
         <description>&lt;h2 id=&#34;що-таке-змінна&#34;&gt;Що таке змінна?
 &lt;/h2&gt;&lt;p&gt;Змінна - це іменовані об&amp;rsquo;єкти даних, котрі зберігаються і використовуються в програмах.&lt;/p&gt;
 &lt;p&gt;Припустимо, ваша програма повинна зберігати вік користувача. Для цього ми можемо назвати ці наді &lt;code&gt;user_age&lt;/code&gt; і привоїти значення цій змінні подібним чином:&lt;/p&gt;
@@ -120,10 +120,10 @@
         </item>
         <item>
         <title>2. Типи даних</title>
-        <link>http://localhost:1313/docs/python/datatypes/</link>
+        <link>https://3dvit.in.ua/docs/python/datatypes/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/datatypes/</guid>
+        <guid>https://3dvit.in.ua/docs/python/datatypes/</guid>
         <description>&lt;h1 id=&#34;типи-даних-в-python&#34;&gt;Типи даних в Python
 &lt;/h1&gt;&lt;p&gt;Перейдемо до типів даних в мові &lt;code&gt;Python&lt;/code&gt;. Тип даних відноситься до значенню, яке зберігає змінна.&lt;/p&gt;
 &lt;p&gt;Ми розглянемо деякі основні типи даних в &lt;code&gt;Python&lt;/code&gt;, зокрема, цілі числа, числа з плаваючою точкою, строки. Даля розглянемо ще 3 важливі типи: список, кордеж та словник.&lt;/p&gt;
@@ -131,10 +131,10 @@
         </item>
         <item>
         <title>3. Перетворення типів даних</title>
-        <link>http://localhost:1313/docs/python/converting/</link>
+        <link>https://3dvit.in.ua/docs/python/converting/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/converting/</guid>
+        <guid>https://3dvit.in.ua/docs/python/converting/</guid>
         <description>&lt;h1 id=&#34;перетворення-типів-даних-в-python&#34;&gt;Перетворення типів даних в Python
 &lt;/h1&gt;&lt;p&gt;Іноді в програмуванні потрібно перетворити один тип даних в другий, наприклад ціле число в строку. Така операція називається приведення типу.&lt;/p&gt;
 &lt;p&gt;Існують 2 види цього самого приведення типу, а саме:&lt;/p&gt;
@@ -148,10 +148,10 @@
         </item>
         <item>
         <title>4. Інтерактивність</title>
-        <link>http://localhost:1313/docs/python/inter/</link>
+        <link>https://3dvit.in.ua/docs/python/inter/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/inter/</guid>
+        <guid>https://3dvit.in.ua/docs/python/inter/</guid>
         <description>&lt;h1 id=&#34;інтерактивність&#34;&gt;Інтерактивність
 &lt;/h1&gt;&lt;p&gt;Ми уже розглянули базові поняття про змінні, давайте напишемо програму, що використовує їх. Наша програма буде дуже простою. Це буде привітання світу, але трохи більш особисте. Ми не просто привітаємо світ, а зробимо так, щоб світ знав наше ім&amp;rsquo;я та вік.&lt;/p&gt;
 &lt;p&gt;Працюючи з сучасними програмами, ми маємо справу з складним інтерфейсом та великою кількістю способів вводу інформації та впливу на роботу цієї програми зі сторони користувача.&lt;/p&gt;
@@ -174,10 +174,10 @@
         </item>
         <item>
         <title>5. Команди управління</title>
-        <link>http://localhost:1313/docs/python/commands/</link>
+        <link>https://3dvit.in.ua/docs/python/commands/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/commands/</guid>
+        <guid>https://3dvit.in.ua/docs/python/commands/</guid>
         <description>&lt;h1 id=&#34;умови-та-логічні-операції&#34;&gt;Умови та логічні операції
 &lt;/h1&gt;&lt;p&gt;Усі інструкції управління мають справу з оцінкою умов. Програма вестиме себе по різному, в залежності від того, чи виконується якась умова.&lt;/p&gt;
 &lt;p&gt;Самим розповсюдженим умовним оператором є оператор порівняння. Якщо ми хочемо порівняти, чи збігаються два числа, то використовуємо оператор &lt;code&gt;==&lt;/code&gt;. Наприклад, вираз &lt;code&gt;x == y&lt;/code&gt; просить програму, перевірити, чи дорівнює значення змінної &lt;code&gt;x&lt;/code&gt; значенню змінної &lt;code&gt;y&lt;/code&gt;.
@@ -195,10 +195,10 @@
         </item>
         <item>
         <title>6. Функції</title>
-        <link>http://localhost:1313/docs/python/func/</link>
+        <link>https://3dvit.in.ua/docs/python/func/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/func/</guid>
+        <guid>https://3dvit.in.ua/docs/python/func/</guid>
         <description>&lt;h1 id=&#34;що-таке-функція&#34;&gt;Що таке функція?
 &lt;/h1&gt;&lt;p&gt;Функція являє собою готовий блок коду, для виконання якоїсь задачі.&lt;/p&gt;
 &lt;p&gt;В залежності від того, як написана функція, чи являється вона частиною класу (клас - це концепція об&amp;rsquo;єктно орієнтованого програмування, котру ви розглянете пізніше) і як вона імпортується, при виклику функції можна або просто ввести її ім&amp;rsquo;я, або скористатись точковим записом.

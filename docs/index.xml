@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>3D Vitalii Shmorhun</title>
-        <link>http://localhost:1313/</link>
+        <link>https://3dvit.in.ua/</link>
         <description>Recent content on 3D Vitalii Shmorhun</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>uk-ua</language>
-        <lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hello World</title>
-        <link>http://localhost:1313/p/hello-world/</link>
+        <link>https://3dvit.in.ua/p/hello-world/</link>
         <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/hello-world/</guid>
-        <description>&lt;img src="http://localhost:1313/p/hello-world/cover.jpg" alt="Featured image of post Hello World" /&gt;&lt;p&gt;Welcome to Hugo theme Stack. This is your first post. Edit or delete it, then start writing!&lt;/p&gt;
+        <guid>https://3dvit.in.ua/p/hello-world/</guid>
+        <description>&lt;img src="https://3dvit.in.ua/p/hello-world/cover.jpg" alt="Featured image of post Hello World" /&gt;&lt;p&gt;Welcome to Hugo theme Stack. This is your first post. Edit or delete it, then start writing!&lt;/p&gt;
 &lt;p&gt;For more information about this theme, check the documentation: &lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://stack.jimmycai.com/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Want a site like this? Check out &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack-starter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -25,10 +25,10 @@
         </item>
         <item>
         <title>1. Змінні та оператори</title>
-        <link>http://localhost:1313/docs/python/var/</link>
+        <link>https://3dvit.in.ua/docs/python/var/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/var/</guid>
+        <guid>https://3dvit.in.ua/docs/python/var/</guid>
         <description>&lt;h2 id=&#34;що-таке-змінна&#34;&gt;Що таке змінна?
 &lt;/h2&gt;&lt;p&gt;Змінна - це іменовані об&amp;rsquo;єкти даних, котрі зберігаються і використовуються в програмах.&lt;/p&gt;
 &lt;p&gt;Припустимо, ваша програма повинна зберігати вік користувача. Для цього ми можемо назвати ці наді &lt;code&gt;user_age&lt;/code&gt; і привоїти значення цій змінні подібним чином:&lt;/p&gt;
@@ -138,10 +138,10 @@
         </item>
         <item>
         <title>1. Створення нового проекту</title>
-        <link>http://localhost:1313/docs/godot_pong/new_game/</link>
+        <link>https://3dvit.in.ua/docs/godot_pong/new_game/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/godot_pong/new_game/</guid>
+        <guid>https://3dvit.in.ua/docs/godot_pong/new_game/</guid>
         <description>&lt;h1 id=&#34;завантажуємо-середовище-розробки&#34;&gt;Завантажуємо середовище розробки
 &lt;/h1&gt;&lt;p&gt;Наш інструмент - вільно-доступний рушій, який можна завантажити на офіційній сторінці. Ми розглядаємо тільки стандартну версію, тобто ту, де мовою виступає вбудований &lt;code&gt;GDScript&lt;/code&gt;. На сторінці завантаження також доступна версія з &lt;code&gt;C#&lt;/code&gt;, але це виходить за межі даного курсу, тому, правильно оберіть свою операційну систему на платформу, і вирушаємо.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://godotengine.org/download/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -149,7 +149,7 @@
 &lt;p&gt;По завершенню завантаження ви отримаєте архів, який потрібно розпакувати в таке місце, де ви його знайдете. Один з цих файлів - це і є усе, що потрібно для розробки. Це і є увесь рушій. Його досить запустити, та розпочати роботу.&lt;/p&gt;
 &lt;h1 id=&#34;менеджер-проектів&#34;&gt;Менеджер проектів
 &lt;/h1&gt;&lt;p&gt;Коли ви тільки запустили рушій, перед вами постане вікно &lt;code&gt;Godot Engine Project Manager&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/editor_ui_intro_project_manager_01.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/editor_ui_intro_project_manager_01.png&#34;
 	
 	
 	
@@ -160,7 +160,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Тут може бути список проектів, що вже існую&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/new_project_window.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/new_project_window.png&#34;
 	
 	
 	
@@ -177,7 +177,7 @@
 &lt;p&gt;Молодці. Ви створили свій перший проект. Він поки порожній і нам ще треба зробити кілька кроків, щоб його можна було запустити.
 За хвилину ми трохи детальніше ознайомимось з інтерфейсом. А поки, просто щоб отримати задоволення від того, що ми вже можемо щось запустити зробимо ще 3 крочки.&lt;/p&gt;
 &lt;p&gt;На панельці зліва вгорі ви бачите вибір між 4 пунктами:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/new_scene_selection.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/new_scene_selection.jpg&#34;
 	
 	
 	
@@ -197,7 +197,7 @@
 Наш вибір на сьогодні, це &lt;code&gt;2D Scene&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Обрали, і у бачимо, що в корені сцени з&amp;rsquo;явився вузол &lt;code&gt;Node2D&lt;/code&gt;. Ми його відразу перейменуємо. Назвемо його Main, так як він у нас головний. Збережемо сцену. Для цього можемо натиснути Control+S або перейти в меню &lt;code&gt;Scene&lt;/code&gt; -&amp;gt; &lt;code&gt;Save Scene&lt;/code&gt; і підтверджуємо наш намір натиснувши Save.&lt;/p&gt;
 &lt;p&gt;Є. Чудово. Ми уже стільки зробили, хочеться якусь винагороду. Хочеться вже запустити нашу гру. Спробуйте. Вгорі справа є маленька кнопочка в формі трикутничка. Натискаємо. Воно нас знову щось питає.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/main_scene_selection.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/main_scene_selection.jpg&#34;
 	
 	
 	
@@ -215,13 +215,13 @@
         </item>
         <item>
         <title>2. Інтерфейс Godot</title>
-        <link>http://localhost:1313/docs/godot_pong/interface/</link>
+        <link>https://3dvit.in.ua/docs/godot_pong/interface/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/godot_pong/interface/</guid>
+        <guid>https://3dvit.in.ua/docs/godot_pong/interface/</guid>
         <description>&lt;h1 id=&#34;інтерфейс-godot&#34;&gt;Інтерфейс Godot
 &lt;/h1&gt;&lt;p&gt;Погляньте навколо. Перед вами робоче середовище Godot.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/main_window.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/main_window.jpg&#34;
 	
 	
 	
@@ -234,7 +234,7 @@
 &lt;p&gt;Зверніть увагу, що робоче вікно розбито на 3 вертикальні секції. Зліва якісь інструменти, потім велике робоче поле і справа знову якісь інструменти.
 Зліва вгорі у нас ієрархія сцени. Поки тут тільки один елемент, але легким рухом руки ми можемо додати сюди купу всього. Трохи нижче у нас файлова система. Показано основна тека проекту, де будуть всілякі картинки, музика, шрифти, моделі&amp;hellip;
 Далі, робоче поле посередині. Воно має 4 режими які перемикаються вгорі.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/editor_modes.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/editor_modes.jpg&#34;
 	
 	
 	
@@ -251,7 +251,7 @@
 &lt;li&gt;&lt;code&gt;AssetLib&lt;/code&gt; це останній розділ. Тут нам доступні різноманітні розширення та всілякі готові рішення, які розроблено спільнотою. Їх може і не багато, але всі вони повністю вільні для використання, в тому числі комерційного.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Залишилась права сторона вікна.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/inspector.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/inspector.jpg&#34;
 	
 	
 	
@@ -265,7 +265,7 @@
 Також справа можна знайти вкладку Nodes. Але про неї ми поговоримо пізніше.
 Ну і ще може бути вкладка налаштувань імпорту різних ресурсів.&lt;/p&gt;
 &lt;p&gt;Те, чого ми досі не розглянули, це нижня частина вікна.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/output_window.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/output_window.jpg&#34;
 	
 	
 	
@@ -281,10 +281,10 @@
         </item>
         <item>
         <title>2. Типи даних</title>
-        <link>http://localhost:1313/docs/python/datatypes/</link>
+        <link>https://3dvit.in.ua/docs/python/datatypes/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/datatypes/</guid>
+        <guid>https://3dvit.in.ua/docs/python/datatypes/</guid>
         <description>&lt;h1 id=&#34;типи-даних-в-python&#34;&gt;Типи даних в Python
 &lt;/h1&gt;&lt;p&gt;Перейдемо до типів даних в мові &lt;code&gt;Python&lt;/code&gt;. Тип даних відноситься до значенню, яке зберігає змінна.&lt;/p&gt;
 &lt;p&gt;Ми розглянемо деякі основні типи даних в &lt;code&gt;Python&lt;/code&gt;, зокрема, цілі числа, числа з плаваючою точкою, строки. Даля розглянемо ще 3 важливі типи: список, кордеж та словник.&lt;/p&gt;
@@ -292,10 +292,10 @@
         </item>
         <item>
         <title>3. Вузли та сцени</title>
-        <link>http://localhost:1313/docs/godot_pong/nodes_and_scenes/</link>
+        <link>https://3dvit.in.ua/docs/godot_pong/nodes_and_scenes/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/godot_pong/nodes_and_scenes/</guid>
+        <guid>https://3dvit.in.ua/docs/godot_pong/nodes_and_scenes/</guid>
         <description>&lt;h1 id=&#34;вузли-та-сцени&#34;&gt;Вузли та сцени
 &lt;/h1&gt;&lt;p&gt;Отже, ми вже трохи ознайомились з тим, що тут де лежить. Зараз зосередимо увагу на панель де відбуваються маніпуляції над ієрархією сцени, а разом з тим, розглянемо основну ідею цього механізму в Godot.&lt;/p&gt;
 &lt;p&gt;На відміну від &lt;code&gt;Unity&lt;/code&gt; який побудований на компонентній архітектурі, наш любий &lt;code&gt;Godot&lt;/code&gt; дотримується вузлової філософії. Оце слово &lt;code&gt;Node&lt;/code&gt; яке ви тут будете часто бачити, перекладається як вузол. З точки зору &lt;code&gt;Godot&lt;/code&gt;, все є вузлами в ієрархії. Кожен вузол має якийсь свій тип і виконує якусь свою визначену функцію. Також вузли можуть збиратись в сцени які зберігаються одним файлом. При цьому будь-яка сцена також може бути вузлом.
@@ -375,10 +375,10 @@
         </item>
         <item>
         <title>3. Перетворення типів даних</title>
-        <link>http://localhost:1313/docs/python/converting/</link>
+        <link>https://3dvit.in.ua/docs/python/converting/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/converting/</guid>
+        <guid>https://3dvit.in.ua/docs/python/converting/</guid>
         <description>&lt;h1 id=&#34;перетворення-типів-даних-в-python&#34;&gt;Перетворення типів даних в Python
 &lt;/h1&gt;&lt;p&gt;Іноді в програмуванні потрібно перетворити один тип даних в другий, наприклад ціле число в строку. Така операція називається приведення типу.&lt;/p&gt;
 &lt;p&gt;Існують 2 види цього самого приведення типу, а саме:&lt;/p&gt;
@@ -392,10 +392,10 @@
         </item>
         <item>
         <title>4. Інтерактивність</title>
-        <link>http://localhost:1313/docs/python/inter/</link>
+        <link>https://3dvit.in.ua/docs/python/inter/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/inter/</guid>
+        <guid>https://3dvit.in.ua/docs/python/inter/</guid>
         <description>&lt;h1 id=&#34;інтерактивність&#34;&gt;Інтерактивність
 &lt;/h1&gt;&lt;p&gt;Ми уже розглянули базові поняття про змінні, давайте напишемо програму, що використовує їх. Наша програма буде дуже простою. Це буде привітання світу, але трохи більш особисте. Ми не просто привітаємо світ, а зробимо так, щоб світ знав наше ім&amp;rsquo;я та вік.&lt;/p&gt;
 &lt;p&gt;Працюючи з сучасними програмами, ми маємо справу з складним інтерфейсом та великою кількістю способів вводу інформації та впливу на роботу цієї програми зі сторони користувача.&lt;/p&gt;
@@ -418,14 +418,14 @@
         </item>
         <item>
         <title>4. Перша ракетка</title>
-        <link>http://localhost:1313/docs/godot_pong/paddle/</link>
+        <link>https://3dvit.in.ua/docs/godot_pong/paddle/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/godot_pong/paddle/</guid>
+        <guid>https://3dvit.in.ua/docs/godot_pong/paddle/</guid>
         <description>&lt;h1 id=&#34;перша-ракетка&#34;&gt;Перша ракетка
 &lt;/h1&gt;&lt;p&gt;Гра, яку ми сьогодні побудуємо, носить назву Pong. Це дуже проста і одна з найстаріших комп&amp;rsquo;ютерних ігор. Вона з&amp;rsquo;явилась ще в 1972 році. Гра передбачає 2 гравці, і, по суті своїй, дуже схоже на настільний теніс. Кожен з гравців керує однією з дощечок. Її можна рухати вверх або вниз і за її допомогою гравець має відбивати кульку.&lt;br&gt;
 Почнемо з створення дощечок. Для цього натискаємо правою кнопкою на наш кореневий вузол і натискаємо Add Child Node (додати дочірній вузол). Нас цікавить вузол під назвою &lt;code&gt;Area2D&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/NodeArea2D.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/NodeArea2D.jpg&#34;
 	
 	
 	
@@ -438,7 +438,7 @@
 &lt;p&gt;Його особливість в тому, що він надсилає сигнал, як тільки зафіксував дотик з фізичним об&amp;rsquo;єктом. Це нам дозволить виявляти зіткнення кульки з дощечкою.&lt;/p&gt;
 &lt;p&gt;В полі пошуку набираємо &amp;ldquo;area&amp;rdquo; і бачимо синій значок &lt;code&gt;Area2D&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Наш новий вузол поки невидимий. Все що ми можемо побачити, це хрестик в центрі координат. Це буде ліва дощечка, тож назвемо вузол Left.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/NodeArea2D02.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/NodeArea2D02.jpg&#34;
 	
 	
 	
@@ -450,7 +450,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Знак оклику поряд означає, що чогось не вистачає. В цьому випадку нам потрібен колайдер. Тобто тіло, форма якого визначає зіткнення.
 Натискаємо правою, додати дочірній вузол, в полі пошуку набираємо &amp;ldquo;Coll&amp;rdquo;. Внизу синенький значок &lt;code&gt;CollisionShape2D&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/NodeCollision.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/NodeCollision.jpg&#34;
 	
 	
 	
@@ -478,7 +478,7 @@
 &lt;/div&gt;
 
 &lt;p&gt;Далі з виділеним колайдером на панелі вгорі знайдіть кнопочку з замочком. Натисніть її. Це запобіжний захід, щоб ми випадково не змістили сам колайдер, а рухали тільки саму дощечку.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LockButton.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/LockButton.jpg&#34;
 	
 	
 	
@@ -492,7 +492,7 @@
 Якщо ви зараз спробуєте запустити гру, вікно все ще буде виглядати порожнім.
 Це тому, що, хоч ми вже маємо колайдер, він сам по собі ніяк не відображається. Нам потрібен спрайт, тобто зображення.&lt;/p&gt;
 &lt;p&gt;Зупиняємо гру і до вузла Left додаємо Sprite. В полі пошуку набираємо &amp;ldquo;Spri&amp;rdquo; і ось він синеньким значком посміхається нам.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/NodeSprite.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/NodeSprite.jpg&#34;
 	
 	
 	
@@ -577,7 +577,7 @@
 Друга змінна текстова. Одна суттєва відмінність від все того ж &lt;strong&gt;Python&lt;/strong&gt;, це те, що якщо змінну вже було ініціалізовано в якийсь тип, ви більше не можете її перепризначити в інший. В змінну &lt;code&gt;a&lt;/code&gt;, яка у нас буде цілочисельною я не можу в наступному рядку записати текст.&lt;/p&gt;
 &lt;p&gt;Але вернемось до першого рядка. Тут написано &lt;code&gt;expend Area2D&lt;/code&gt;. Це означає, що ми наслідуємо клас Area2D з усіма його особливостями і відповідно, наш клас &lt;code&gt;paddle&lt;/code&gt; буде їх розширяти.&lt;/p&gt;
 &lt;p&gt;Далі ми бачимо приклад оголошення функції.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ReadyFunc.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/ReadyFunc.jpg&#34;
 	
 	
 	
@@ -589,7 +589,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Ця функція дуже особлива. Вона виконується відразу, як тільки об&amp;rsquo;єкт додано в сцену. В нашому випадку, він уже в сцені, тому функція виконається на першому кадрі гри. Це дозволяє нам зробити всі попередні налаштування, перш ніж об&amp;rsquo;єкт повною мірою стане активним. Тут буде ініціалізація всіляких змінних.&lt;/p&gt;
 &lt;p&gt;Наступна функція, яка поки закоментована, теж особлива.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ProcFunc.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/ProcFunc.jpg&#34;
 	
 	
 	
@@ -680,10 +680,10 @@
         </item>
         <item>
         <title>5. Друга ракетка</title>
-        <link>http://localhost:1313/docs/godot_pong/paddle2/</link>
+        <link>https://3dvit.in.ua/docs/godot_pong/paddle2/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/godot_pong/paddle2/</guid>
+        <guid>https://3dvit.in.ua/docs/godot_pong/paddle2/</guid>
         <description>&lt;h1 id=&#34;друга-ракетка&#34;&gt;Друга ракетка
 &lt;/h1&gt;&lt;p&gt;В попередньому розділі ми створили першу ракетку для нашої гри. Друга являє собою все те ж саме, крім того, що повинна управлятись іншими клавішами.
 Немає сенсу створювати об&amp;rsquo;єкт з нуля. У нас вже є описано основу класу paddle, який буде виконувати роль обох. Але все ж, нам треба спосіб як їх розрізняти в коді. Є багато шляхів це добитись, але ми просто скористаємось назвою об&amp;rsquo;єкта.
@@ -705,7 +705,7 @@
 
 &lt;p&gt;Далі нам варто перейменувати цей об&amp;rsquo;єкт. Назвемо його Right.&lt;/p&gt;
 &lt;p&gt;Якщо ви зараз запустите гру, обидві дощечки будуть рухатись синхронно по натисканню одних і тих же клавіш. Ми стикнулись з проблемою, як же з одного коду управляти двома об&amp;rsquo;єктами, та ще й різними клавішами. Для цього ще раз поглянемо на панель налаштування вводу, де ми налаштовували події натискання клавіш. Для цього натискаємо &lt;code&gt;Project&lt;/code&gt; -&amp;gt; &lt;code&gt;Project Settings&lt;/code&gt; і переходимо на вкладку &lt;code&gt;Input Map&lt;/code&gt;. Погляньте, як ми назвали події. Кожна з цих назв починається з &lt;code&gt;left&lt;/code&gt; або &lt;code&gt;right&lt;/code&gt;. Ми це використаємо на нашу користь.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ActionLeftRight.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/ActionLeftRight.jpg&#34;
 	
 	
 	
@@ -811,10 +811,10 @@
         </item>
         <item>
         <title>5. Команди управління</title>
-        <link>http://localhost:1313/docs/python/commands/</link>
+        <link>https://3dvit.in.ua/docs/python/commands/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/commands/</guid>
+        <guid>https://3dvit.in.ua/docs/python/commands/</guid>
         <description>&lt;h1 id=&#34;умови-та-логічні-операції&#34;&gt;Умови та логічні операції
 &lt;/h1&gt;&lt;p&gt;Усі інструкції управління мають справу з оцінкою умов. Програма вестиме себе по різному, в залежності від того, чи виконується якась умова.&lt;/p&gt;
 &lt;p&gt;Самим розповсюдженим умовним оператором є оператор порівняння. Якщо ми хочемо порівняти, чи збігаються два числа, то використовуємо оператор &lt;code&gt;==&lt;/code&gt;. Наприклад, вираз &lt;code&gt;x == y&lt;/code&gt; просить програму, перевірити, чи дорівнює значення змінної &lt;code&gt;x&lt;/code&gt; значенню змінної &lt;code&gt;y&lt;/code&gt;.
@@ -832,10 +832,10 @@
         </item>
         <item>
         <title>6. М&#39;яч</title>
-        <link>http://localhost:1313/docs/godot_pong/ball/</link>
+        <link>https://3dvit.in.ua/docs/godot_pong/ball/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/godot_pong/ball/</guid>
+        <guid>https://3dvit.in.ua/docs/godot_pong/ball/</guid>
         <description>&lt;h1 id=&#34;мяч&#34;&gt;М&amp;rsquo;яч
 &lt;/h1&gt;&lt;p&gt;Приступимо до створення м&amp;rsquo;ячика, який будуть відбивати гравці.&lt;/p&gt;
 &lt;p&gt;Почнемо так само, як з дощечками, в тілі вузла &lt;code&gt;Main&lt;/code&gt; створимо новий вузол типу &lt;code&gt;Area2D&lt;/code&gt;. Нагадаю, що особливість цього типу об&amp;rsquo;єктів в тому, що вони можуть виявляти, якщо який-небудь фізичний об&amp;rsquo;єкт з ними контактує. Якщо відбулась така подія дотику або перетину, цей об&amp;rsquo;єкт може надіслати сигнал. На сьогодні ми дуже коротко розглянемо сигнали. Просто, що вони існують. Десь на наступних заняттях глянемо в це питання трохи глибше. &lt;/p&gt;
@@ -1076,10 +1076,10 @@
         </item>
         <item>
         <title>6. Функції</title>
-        <link>http://localhost:1313/docs/python/func/</link>
+        <link>https://3dvit.in.ua/docs/python/func/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/python/func/</guid>
+        <guid>https://3dvit.in.ua/docs/python/func/</guid>
         <description>&lt;h1 id=&#34;що-таке-функція&#34;&gt;Що таке функція?
 &lt;/h1&gt;&lt;p&gt;Функція являє собою готовий блок коду, для виконання якоїсь задачі.&lt;/p&gt;
 &lt;p&gt;В залежності від того, як написана функція, чи являється вона частиною класу (клас - це концепція об&amp;rsquo;єктно орієнтованого програмування, котру ви розглянете пізніше) і як вона імпортується, при виклику функції можна або просто ввести її ім&amp;rsquo;я, або скористатись точковим записом.
@@ -1100,10 +1100,10 @@
         </item>
         <item>
         <title>7. Стінки</title>
-        <link>http://localhost:1313/docs/godot_pong/walls/</link>
+        <link>https://3dvit.in.ua/docs/godot_pong/walls/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/godot_pong/walls/</guid>
+        <guid>https://3dvit.in.ua/docs/godot_pong/walls/</guid>
         <description>&lt;h1 id=&#34;стінки&#34;&gt;Стінки
 &lt;/h1&gt;&lt;p&gt;В цій грі потрібні 2 типи стінок, одні, вгорі і внизу поля, просто відбиватимуть м&amp;rsquo;яч. Інші, позаду кожного з гравців, зараховуватимуть поразку кожному з них та стартуватимуть новий раунд.
 Почнемо зі стінок відбивання.
@@ -1219,7 +1219,7 @@
 &lt;/div&gt;
 відразу після нашого попереднього рядка.&lt;/p&gt;
 &lt;p&gt;Ось що ми можемо побачити після двох ігор:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/Random01.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/Random01.jpg&#34;
 	
 	
 	
@@ -1248,10 +1248,10 @@
         </item>
         <item>
         <title>8. Рахунок</title>
-        <link>http://localhost:1313/docs/godot_pong/score/</link>
+        <link>https://3dvit.in.ua/docs/godot_pong/score/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/docs/godot_pong/score/</guid>
+        <guid>https://3dvit.in.ua/docs/godot_pong/score/</guid>
         <description>&lt;h1 id=&#34;рахунок&#34;&gt;Рахунок
 &lt;/h1&gt;&lt;p&gt;Почнемо з того, що ми вже добре вміємо, до вузла &lt;code&gt;Main&lt;/code&gt; додамо новий вузол &lt;code&gt;Area2D&lt;/code&gt;, до нього відразу колайдер, який розтягнемо, щоб він перекривав лівий вихід для кулі, позаду лівого гравця. Перейменуємо вузол на &lt;code&gt;LeftWall&lt;/code&gt;. Далі здублюємо, копію переміщаємо вправо, позаду правого гравця і перейменовуємо &lt;code&gt;RightWall&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&#34;video-wrapper&#34;&gt;
@@ -1499,7 +1499,7 @@
 &lt;p&gt;Зараз ми вже можемо запустити гру та розпочати поєдинок.
 Цей проект ми поки залишаємо. Візуалізація рахунку гри та взагалі оформлення користувацького інтерфейсу буде детальніше розглянута з наступним проектом. А всім хто дійшов до цієї точки, пропоную самостійно покращити вигляд гри, намалювавши зображення для дощечок, кульки та ігрового поля.
 Ось що у мене получилось:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/PongFin.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/PongFin.jpg&#34;
 	
 	
 	
@@ -1510,15 +1510,15 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Нижче ви можете завантажити готовий і відчищений проект цієї гри:&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/download/pong_fin.zip&#34; &gt;pong_fin.zip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://3dvit.in.ua/download/pong_fin.zip&#34; &gt;pong_fin.zip&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Markdown Syntax Guide</title>
-        <link>http://localhost:1313/p/markdown-syntax-guide/</link>
+        <link>https://3dvit.in.ua/p/markdown-syntax-guide/</link>
         <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/markdown-syntax-guide/</guid>
+        <guid>https://3dvit.in.ua/p/markdown-syntax-guide/</guid>
         <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
 &lt;h2 id=&#34;headings&#34;&gt;Headings
 &lt;/h2&gt;&lt;p&gt;The following HTML &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;—&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; elements represent six levels of section headings. &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; is the highest section level while &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; is the lowest.&lt;/p&gt;
@@ -1713,11 +1713,11 @@
         </item>
         <item>
         <title>Image gallery</title>
-        <link>http://localhost:1313/p/image-gallery/</link>
+        <link>https://3dvit.in.ua/p/image-gallery/</link>
         <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/image-gallery/</guid>
-        <description>&lt;img src="http://localhost:1313/p/image-gallery/2.jpg" alt="Featured image of post Image gallery" /&gt;&lt;p&gt;Hugo theme Stack supports the creation of interactive image galleries using Markdown. It&amp;rsquo;s powered by &lt;a class=&#34;link&#34; href=&#34;https://photoswipe.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://3dvit.in.ua/p/image-gallery/</guid>
+        <description>&lt;img src="https://3dvit.in.ua/p/image-gallery/2.jpg" alt="Featured image of post Image gallery" /&gt;&lt;p&gt;Hugo theme Stack supports the creation of interactive image galleries using Markdown. It&amp;rsquo;s powered by &lt;a class=&#34;link&#34; href=&#34;https://photoswipe.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;PhotoSwipe&lt;/a&gt; and its syntax was inspired by &lt;a class=&#34;link&#34; href=&#34;https://typlog.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Typlog&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To use this feature, the image must be in the same directory as the Markdown file, as it uses Hugo&amp;rsquo;s page bundle feature to read the dimensions of the image. &lt;strong&gt;External images are not supported.&lt;/strong&gt;&lt;/p&gt;
@@ -1731,10 +1731,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;result&#34;&gt;Result
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/image-gallery/1.jpg&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/p/image-gallery/1.jpg&#34;
 	width=&#34;2000&#34;
 	height=&#34;1400&#34;
-	srcset=&#34;http://localhost:1313/p/image-gallery/1_hu_811b671457ffff1f.jpg 480w, http://localhost:1313/p/image-gallery/1_hu_c74af69dd7c1dcda.jpg 1024w&#34;
+	srcset=&#34;https://3dvit.in.ua/p/image-gallery/1_hu_811b671457ffff1f.jpg 480w, https://3dvit.in.ua/p/image-gallery/1_hu_c74af69dd7c1dcda.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Image 1&#34;
@@ -1744,10 +1744,10 @@
 		data-flex-grow=&#34;142&#34;
 		data-flex-basis=&#34;342px&#34;
 	
-&gt; &lt;img src=&#34;http://localhost:1313/p/image-gallery/2.jpg&#34;
+&gt; &lt;img src=&#34;https://3dvit.in.ua/p/image-gallery/2.jpg&#34;
 	width=&#34;1500&#34;
 	height=&#34;2250&#34;
-	srcset=&#34;http://localhost:1313/p/image-gallery/2_hu_42f6436cb1637265.jpg 480w, http://localhost:1313/p/image-gallery/2_hu_27862a49608da0d9.jpg 1024w&#34;
+	srcset=&#34;https://3dvit.in.ua/p/image-gallery/2_hu_42f6436cb1637265.jpg 480w, https://3dvit.in.ua/p/image-gallery/2_hu_27862a49608da0d9.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Image 2&#34;
@@ -1767,11 +1767,11 @@
         </item>
         <item>
         <title>Shortcodes</title>
-        <link>http://localhost:1313/p/shortcodes/</link>
+        <link>https://3dvit.in.ua/p/shortcodes/</link>
         <pubDate>Fri, 25 Aug 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/shortcodes/</guid>
-        <description>&lt;img src="http://localhost:1313/p/shortcodes/cover.jpg" alt="Featured image of post Shortcodes" /&gt;&lt;p&gt;For more details, check out the &lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/writing/shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://3dvit.in.ua/p/shortcodes/</guid>
+        <description>&lt;img src="https://3dvit.in.ua/p/shortcodes/cover.jpg" alt="Featured image of post Shortcodes" /&gt;&lt;p&gt;For more details, check out the &lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/writing/shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;documentation&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;youtube-video&#34;&gt;YouTube video
 &lt;/h2&gt;&lt;div class=&#34;video-wrapper&#34;&gt;
@@ -1806,10 +1806,10 @@
         </item>
         <item>
         <title>Math Typesetting</title>
-        <link>http://localhost:1313/p/math-typesetting/</link>
+        <link>https://3dvit.in.ua/p/math-typesetting/</link>
         <pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/math-typesetting/</guid>
+        <guid>https://3dvit.in.ua/p/math-typesetting/</guid>
         <description>&lt;p&gt;Stack has built-in support for math typesetting using &lt;a class=&#34;link&#34; href=&#34;https://katex.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;KaTeX&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;It&amp;rsquo;s not enabled by default side-wide,&lt;/strong&gt; but you can enable it for individual posts by adding &lt;code&gt;math: true&lt;/code&gt; to the front matter. Or you can enable it side-wide by adding &lt;code&gt;math = true&lt;/code&gt; to the &lt;code&gt;params.article&lt;/code&gt; section in &lt;code&gt;config.toml&lt;/code&gt;.&lt;/p&gt;
@@ -1856,18 +1856,18 @@ $$&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
         </item>
         <item>
         <title>Архів</title>
-        <link>http://localhost:1313/archives/</link>
+        <link>https://3dvit.in.ua/archives/</link>
         <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/archives/</guid>
+        <guid>https://3dvit.in.ua/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Посилання</title>
-        <link>http://localhost:1313/%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F/</link>
+        <link>https://3dvit.in.ua/%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F/</guid>
+        <guid>https://3dvit.in.ua/%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F/</guid>
         <description></description>
         </item>
         
