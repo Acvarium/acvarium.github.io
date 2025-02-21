@@ -8,11 +8,11 @@
         {{ .Title | default .Params.title | default (replace (path.Base (trim .File.Path "/")) "-" " ") | title }}
       </a>
       {{ if $hasChildren }}
-        <button class="toggle-btn" onclick="toggleMenu(this)">◀</button>
+        <button class="toggle-btn" data-menu-id="{{ .RelPermalink }}">◀</button>
       {{ end }}
     </div>
     {{ with .Pages }}
-      <ul class="submenu">
+      <ul class="submenu" style="display: none;">
         {{ range . }}
           {{ if not .IsSection }} <!-- Тільки якщо це не розділ -->
           <li>

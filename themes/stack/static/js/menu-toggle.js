@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".toggle-btn");
 
     // Завантажуємо стан меню з LocalStorage
-    const savedState = JSON.parse(localStorage.getItem("menuState")) || {};
+    const savedState = JSON.parse(localStorage.getItem("menu-state")) || {};
 
     buttons.forEach(button => {
         let submenu = button.parentElement.nextElementSibling;
         if (submenu) {
-            let menuId = submenu.dataset.menuId || submenu.previousElementSibling.textContent.trim();
+            let menuId = button.dataset.menuId;
             
             // Перевіряємо, чи це меню було відкрито раніше
             if (savedState[menuId]) {
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Оновлюємо стан у LocalStorage
                 savedState[menuId] = !isOpen;
-                localStorage.setItem("menuState", JSON.stringify(savedState));
+                localStorage.setItem("menu-state", JSON.stringify(savedState));
             });
         }
     });
