@@ -18,6 +18,10 @@ links:
   description: Всілякого різного, що я колись починав, і не обовʼязково закінчив
   website: https://github.com/Acvarium/
   image: /images/github-links.svg
+- title: Itch.io
+  description: колекція невеликих ігор, які я довів хоч до якоїсь форми завершеності
+  website: https://acvarium.itch.io/
+  image: /images/itch-links.svg
 
 menu:
     main: 

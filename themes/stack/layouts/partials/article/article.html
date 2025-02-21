@@ -4,8 +4,41 @@
     {{ partial "article/components/content" . }}
 
     {{ partial "article/components/footer" . }}
-
     {{ if or .Params.math .Site.Params.article.math }}
         {{ partialCached "article/components/math.html" . }}
     {{ end }}
+    {{ $pages := .Parent.Pages.ByWeight }}
+
+
+{{ $pages := .Parent.Pages.ByWeight }}
+{{ $current := . }}
+
+{{ $pages := .Parent.Pages.ByWeight }}
+{{ $current := . }}
+
+{{ if .IsSection }}
+  {{ with .Pages.ByWeight }}
+    {{ $firstChild := index . 0 }}
+    {{ with $firstChild }}
+      <div class="next-article">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </div>
+    {{ end }}
+  {{ end }}
+{{ else }}
+  {{ range $index, $page := $pages }}
+    {{ if eq $page $current }}
+      {{ $nextIndex := add $index 1 }}
+      {{ if lt $nextIndex (len $pages) }}
+        {{ $next := index $pages $nextIndex }}
+        <div class="next-article">
+          <a href="{{ $next.RelPermalink }}">{{ $next.Title }}</a>
+        </div>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+  
+
 </article>
