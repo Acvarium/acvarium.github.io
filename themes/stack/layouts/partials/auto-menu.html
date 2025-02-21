@@ -1,10 +1,10 @@
 <li class="auto-menu">
-  {{ range . }} <!-- Перебираємо всі сторінки -->
-  {{ if .IsSection }} <!-- Переконуємося, що це розділ (папка) -->
+  {{ range . }}
+  {{ if .IsSection }}
   <div class="root-item">
     {{ $hasChildren := .Pages }}
     <div class="menu-item">
-      <a href="{{ .RelPermalink }}">
+      <a href="{{ .RelPermalink }}" class="menu-link">
         {{ .Title | default .Params.title | default (replace (path.Base (trim .File.Path "/")) "-" " ") | title }}
       </a>
       {{ if $hasChildren }}
@@ -14,9 +14,9 @@
     {{ with .Pages }}
       <ul class="submenu" style="display: none;">
         {{ range . }}
-          {{ if not .IsSection }} <!-- Тільки якщо це не розділ -->
+          {{ if not .IsSection }}
           <li>
-            <a href="{{ .RelPermalink }}">
+            <a href="{{ .RelPermalink }}" class="menu-link">
               {{ .Title | default .Params.title | default (replace (path.Base (trim .File.Path "/")) "-" " ") | title }}
             </a>
           </li>
@@ -27,4 +27,4 @@
     </div>
   {{ end }}
   {{ end }}
-  </li>
+</li>

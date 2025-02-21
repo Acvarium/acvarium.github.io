@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".toggle-btn");
+    const links = document.querySelectorAll(".menu-link");
 
     // Завантажуємо стан меню з LocalStorage
     const savedState = JSON.parse(localStorage.getItem("menu-state")) || {};
@@ -25,6 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 savedState[menuId] = !isOpen;
                 localStorage.setItem("menu-state", JSON.stringify(savedState));
             });
+        }
+    });
+
+    // Визначаємо поточну сторінку та додаємо клас active
+    const currentPath = window.location.pathname;
+    links.forEach(link => {
+        if (link.getAttribute("href") === currentPath) {
+            link.classList.add("active");
         }
     });
 });
