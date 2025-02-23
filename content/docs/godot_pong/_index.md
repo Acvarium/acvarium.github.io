@@ -4,6 +4,7 @@ bookCollapseSection: true
 bookFlatSection: true
 title: "Pong в Godot"
 layout: single
+draft: true
 ---
 
 # Pong - одна з найстаріших аркадних відеоігор.

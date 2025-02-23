@@ -1,5 +1,5 @@
 ---
-title: Посилання
+title: Мої Посилання
 links:
 
 - title: Youtube
@@ -25,7 +25,7 @@ links:
 
 menu:
     main: 
-        weight: 4
+        weight: 6
         params:
             icon: link
 

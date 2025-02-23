@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pong в Godot on 3D Vitalii Shmorhun</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/</link>
+        <link>http://localhost:1313/docs/godot_pong/</link>
         <description>Recent content in Pong в Godot on 3D Vitalii Shmorhun</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>uk-ua</language><atom:link href="https://3dvit.in.ua/docs/godot_pong/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>uk-ua</language><atom:link href="http://localhost:1313/docs/godot_pong/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>1. Створення нового проекту</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/new_game/</link>
+        <link>http://localhost:1313/docs/godot_pong/new_game/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/docs/godot_pong/new_game/</guid>
+        <guid>http://localhost:1313/docs/godot_pong/new_game/</guid>
         <description>&lt;h1 id=&#34;завантажуємо-середовище-розробки&#34;&gt;Завантажуємо середовище розробки
 &lt;/h1&gt;&lt;p&gt;Наш інструмент - вільно-доступний рушій, який можна завантажити на офіційній сторінці. Ми розглядаємо тільки стандартну версію, тобто ту, де мовою виступає вбудований &lt;code&gt;GDScript&lt;/code&gt;. На сторінці завантаження також доступна версія з &lt;code&gt;C#&lt;/code&gt;, але це виходить за межі даного курсу, тому, правильно оберіть свою операційну систему на платформу, і вирушаємо.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://godotengine.org/download/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -18,7 +18,7 @@
 &lt;p&gt;По завершенню завантаження ви отримаєте архів, який потрібно розпакувати в таке місце, де ви його знайдете. Один з цих файлів - це і є усе, що потрібно для розробки. Це і є увесь рушій. Його досить запустити, та розпочати роботу.&lt;/p&gt;
 &lt;h1 id=&#34;менеджер-проектів&#34;&gt;Менеджер проектів
 &lt;/h1&gt;&lt;p&gt;Коли ви тільки запустили рушій, перед вами постане вікно &lt;code&gt;Godot Engine Project Manager&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/editor_ui_intro_project_manager_01.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/editor_ui_intro_project_manager_01.png&#34;
 	
 	
 	
@@ -29,7 +29,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Тут може бути список проектів, що вже існую&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/new_project_window.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/new_project_window.png&#34;
 	
 	
 	
@@ -46,7 +46,7 @@
 &lt;p&gt;Молодці. Ви створили свій перший проект. Він поки порожній і нам ще треба зробити кілька кроків, щоб його можна було запустити.
 За хвилину ми трохи детальніше ознайомимось з інтерфейсом. А поки, просто щоб отримати задоволення від того, що ми вже можемо щось запустити зробимо ще 3 крочки.&lt;/p&gt;
 &lt;p&gt;На панельці зліва вгорі ви бачите вибір між 4 пунктами:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/new_scene_selection.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/new_scene_selection.jpg&#34;
 	
 	
 	
@@ -66,7 +66,7 @@
 Наш вибір на сьогодні, це &lt;code&gt;2D Scene&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Обрали, і у бачимо, що в корені сцени з&amp;rsquo;явився вузол &lt;code&gt;Node2D&lt;/code&gt;. Ми його відразу перейменуємо. Назвемо його Main, так як він у нас головний. Збережемо сцену. Для цього можемо натиснути Control+S або перейти в меню &lt;code&gt;Scene&lt;/code&gt; -&amp;gt; &lt;code&gt;Save Scene&lt;/code&gt; і підтверджуємо наш намір натиснувши Save.&lt;/p&gt;
 &lt;p&gt;Є. Чудово. Ми уже стільки зробили, хочеться якусь винагороду. Хочеться вже запустити нашу гру. Спробуйте. Вгорі справа є маленька кнопочка в формі трикутничка. Натискаємо. Воно нас знову щось питає.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/main_scene_selection.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/main_scene_selection.jpg&#34;
 	
 	
 	
@@ -84,13 +84,13 @@
         </item>
         <item>
         <title>2. Інтерфейс Godot</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/interface/</link>
+        <link>http://localhost:1313/docs/godot_pong/interface/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/docs/godot_pong/interface/</guid>
+        <guid>http://localhost:1313/docs/godot_pong/interface/</guid>
         <description>&lt;h1 id=&#34;інтерфейс-godot&#34;&gt;Інтерфейс Godot
 &lt;/h1&gt;&lt;p&gt;Погляньте навколо. Перед вами робоче середовище Godot.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/main_window.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/main_window.jpg&#34;
 	
 	
 	
@@ -103,7 +103,7 @@
 &lt;p&gt;Зверніть увагу, що робоче вікно розбито на 3 вертикальні секції. Зліва якісь інструменти, потім велике робоче поле і справа знову якісь інструменти.
 Зліва вгорі у нас ієрархія сцени. Поки тут тільки один елемент, але легким рухом руки ми можемо додати сюди купу всього. Трохи нижче у нас файлова система. Показано основна тека проекту, де будуть всілякі картинки, музика, шрифти, моделі&amp;hellip;
 Далі, робоче поле посередині. Воно має 4 режими які перемикаються вгорі.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/editor_modes.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/editor_modes.jpg&#34;
 	
 	
 	
@@ -120,7 +120,7 @@
 &lt;li&gt;&lt;code&gt;AssetLib&lt;/code&gt; це останній розділ. Тут нам доступні різноманітні розширення та всілякі готові рішення, які розроблено спільнотою. Їх може і не багато, але всі вони повністю вільні для використання, в тому числі комерційного.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Залишилась права сторона вікна.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/inspector.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/inspector.jpg&#34;
 	
 	
 	
@@ -134,7 +134,7 @@
 Також справа можна знайти вкладку Nodes. Але про неї ми поговоримо пізніше.
 Ну і ще може бути вкладка налаштувань імпорту різних ресурсів.&lt;/p&gt;
 &lt;p&gt;Те, чого ми досі не розглянули, це нижня частина вікна.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/output_window.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/output_window.jpg&#34;
 	
 	
 	
@@ -150,10 +150,10 @@
         </item>
         <item>
         <title>3. Вузли та сцени</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/nodes_and_scenes/</link>
+        <link>http://localhost:1313/docs/godot_pong/nodes_and_scenes/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/docs/godot_pong/nodes_and_scenes/</guid>
+        <guid>http://localhost:1313/docs/godot_pong/nodes_and_scenes/</guid>
         <description>&lt;h1 id=&#34;вузли-та-сцени&#34;&gt;Вузли та сцени
 &lt;/h1&gt;&lt;p&gt;Отже, ми вже трохи ознайомились з тим, що тут де лежить. Зараз зосередимо увагу на панель де відбуваються маніпуляції над ієрархією сцени, а разом з тим, розглянемо основну ідею цього механізму в Godot.&lt;/p&gt;
 &lt;p&gt;На відміну від &lt;code&gt;Unity&lt;/code&gt; який побудований на компонентній архітектурі, наш любий &lt;code&gt;Godot&lt;/code&gt; дотримується вузлової філософії. Оце слово &lt;code&gt;Node&lt;/code&gt; яке ви тут будете часто бачити, перекладається як вузол. З точки зору &lt;code&gt;Godot&lt;/code&gt;, все є вузлами в ієрархії. Кожен вузол має якийсь свій тип і виконує якусь свою визначену функцію. Також вузли можуть збиратись в сцени які зберігаються одним файлом. При цьому будь-яка сцена також може бути вузлом.
@@ -233,14 +233,14 @@
         </item>
         <item>
         <title>4. Перша ракетка</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/paddle/</link>
+        <link>http://localhost:1313/docs/godot_pong/paddle/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/docs/godot_pong/paddle/</guid>
+        <guid>http://localhost:1313/docs/godot_pong/paddle/</guid>
         <description>&lt;h1 id=&#34;перша-ракетка&#34;&gt;Перша ракетка
 &lt;/h1&gt;&lt;p&gt;Гра, яку ми сьогодні побудуємо, носить назву Pong. Це дуже проста і одна з найстаріших комп&amp;rsquo;ютерних ігор. Вона з&amp;rsquo;явилась ще в 1972 році. Гра передбачає 2 гравці, і, по суті своїй, дуже схоже на настільний теніс. Кожен з гравців керує однією з дощечок. Її можна рухати вверх або вниз і за її допомогою гравець має відбивати кульку.&lt;br&gt;
 Почнемо з створення дощечок. Для цього натискаємо правою кнопкою на наш кореневий вузол і натискаємо Add Child Node (додати дочірній вузол). Нас цікавить вузол під назвою &lt;code&gt;Area2D&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/NodeArea2D.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/NodeArea2D.jpg&#34;
 	
 	
 	
@@ -253,7 +253,7 @@
 &lt;p&gt;Його особливість в тому, що він надсилає сигнал, як тільки зафіксував дотик з фізичним об&amp;rsquo;єктом. Це нам дозволить виявляти зіткнення кульки з дощечкою.&lt;/p&gt;
 &lt;p&gt;В полі пошуку набираємо &amp;ldquo;area&amp;rdquo; і бачимо синій значок &lt;code&gt;Area2D&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Наш новий вузол поки невидимий. Все що ми можемо побачити, це хрестик в центрі координат. Це буде ліва дощечка, тож назвемо вузол Left.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/NodeArea2D02.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/NodeArea2D02.jpg&#34;
 	
 	
 	
@@ -265,7 +265,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Знак оклику поряд означає, що чогось не вистачає. В цьому випадку нам потрібен колайдер. Тобто тіло, форма якого визначає зіткнення.
 Натискаємо правою, додати дочірній вузол, в полі пошуку набираємо &amp;ldquo;Coll&amp;rdquo;. Внизу синенький значок &lt;code&gt;CollisionShape2D&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/NodeCollision.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/NodeCollision.jpg&#34;
 	
 	
 	
@@ -293,7 +293,7 @@
 &lt;/div&gt;
 
 &lt;p&gt;Далі з виділеним колайдером на панелі вгорі знайдіть кнопочку з замочком. Натисніть її. Це запобіжний захід, щоб ми випадково не змістили сам колайдер, а рухали тільки саму дощечку.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/LockButton.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LockButton.jpg&#34;
 	
 	
 	
@@ -307,7 +307,7 @@
 Якщо ви зараз спробуєте запустити гру, вікно все ще буде виглядати порожнім.
 Це тому, що, хоч ми вже маємо колайдер, він сам по собі ніяк не відображається. Нам потрібен спрайт, тобто зображення.&lt;/p&gt;
 &lt;p&gt;Зупиняємо гру і до вузла Left додаємо Sprite. В полі пошуку набираємо &amp;ldquo;Spri&amp;rdquo; і ось він синеньким значком посміхається нам.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/NodeSprite.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/NodeSprite.jpg&#34;
 	
 	
 	
@@ -392,7 +392,7 @@
 Друга змінна текстова. Одна суттєва відмінність від все того ж &lt;strong&gt;Python&lt;/strong&gt;, це те, що якщо змінну вже було ініціалізовано в якийсь тип, ви більше не можете її перепризначити в інший. В змінну &lt;code&gt;a&lt;/code&gt;, яка у нас буде цілочисельною я не можу в наступному рядку записати текст.&lt;/p&gt;
 &lt;p&gt;Але вернемось до першого рядка. Тут написано &lt;code&gt;expend Area2D&lt;/code&gt;. Це означає, що ми наслідуємо клас Area2D з усіма його особливостями і відповідно, наш клас &lt;code&gt;paddle&lt;/code&gt; буде їх розширяти.&lt;/p&gt;
 &lt;p&gt;Далі ми бачимо приклад оголошення функції.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/ReadyFunc.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ReadyFunc.jpg&#34;
 	
 	
 	
@@ -404,7 +404,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Ця функція дуже особлива. Вона виконується відразу, як тільки об&amp;rsquo;єкт додано в сцену. В нашому випадку, він уже в сцені, тому функція виконається на першому кадрі гри. Це дозволяє нам зробити всі попередні налаштування, перш ніж об&amp;rsquo;єкт повною мірою стане активним. Тут буде ініціалізація всіляких змінних.&lt;/p&gt;
 &lt;p&gt;Наступна функція, яка поки закоментована, теж особлива.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/ProcFunc.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ProcFunc.jpg&#34;
 	
 	
 	
@@ -495,10 +495,10 @@
         </item>
         <item>
         <title>5. Друга ракетка</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/paddle2/</link>
+        <link>http://localhost:1313/docs/godot_pong/paddle2/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/docs/godot_pong/paddle2/</guid>
+        <guid>http://localhost:1313/docs/godot_pong/paddle2/</guid>
         <description>&lt;h1 id=&#34;друга-ракетка&#34;&gt;Друга ракетка
 &lt;/h1&gt;&lt;p&gt;В попередньому розділі ми створили першу ракетку для нашої гри. Друга являє собою все те ж саме, крім того, що повинна управлятись іншими клавішами.
 Немає сенсу створювати об&amp;rsquo;єкт з нуля. У нас вже є описано основу класу paddle, який буде виконувати роль обох. Але все ж, нам треба спосіб як їх розрізняти в коді. Є багато шляхів це добитись, але ми просто скористаємось назвою об&amp;rsquo;єкта.
@@ -520,7 +520,7 @@
 
 &lt;p&gt;Далі нам варто перейменувати цей об&amp;rsquo;єкт. Назвемо його Right.&lt;/p&gt;
 &lt;p&gt;Якщо ви зараз запустите гру, обидві дощечки будуть рухатись синхронно по натисканню одних і тих же клавіш. Ми стикнулись з проблемою, як же з одного коду управляти двома об&amp;rsquo;єктами, та ще й різними клавішами. Для цього ще раз поглянемо на панель налаштування вводу, де ми налаштовували події натискання клавіш. Для цього натискаємо &lt;code&gt;Project&lt;/code&gt; -&amp;gt; &lt;code&gt;Project Settings&lt;/code&gt; і переходимо на вкладку &lt;code&gt;Input Map&lt;/code&gt;. Погляньте, як ми назвали події. Кожна з цих назв починається з &lt;code&gt;left&lt;/code&gt; або &lt;code&gt;right&lt;/code&gt;. Ми це використаємо на нашу користь.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/ActionLeftRight.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ActionLeftRight.jpg&#34;
 	
 	
 	
@@ -626,10 +626,10 @@
         </item>
         <item>
         <title>6. М&#39;яч</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/ball/</link>
+        <link>http://localhost:1313/docs/godot_pong/ball/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/docs/godot_pong/ball/</guid>
+        <guid>http://localhost:1313/docs/godot_pong/ball/</guid>
         <description>&lt;h1 id=&#34;мяч&#34;&gt;М&amp;rsquo;яч
 &lt;/h1&gt;&lt;p&gt;Приступимо до створення м&amp;rsquo;ячика, який будуть відбивати гравці.&lt;/p&gt;
 &lt;p&gt;Почнемо так само, як з дощечками, в тілі вузла &lt;code&gt;Main&lt;/code&gt; створимо новий вузол типу &lt;code&gt;Area2D&lt;/code&gt;. Нагадаю, що особливість цього типу об&amp;rsquo;єктів в тому, що вони можуть виявляти, якщо який-небудь фізичний об&amp;rsquo;єкт з ними контактує. Якщо відбулась така подія дотику або перетину, цей об&amp;rsquo;єкт може надіслати сигнал. На сьогодні ми дуже коротко розглянемо сигнали. Просто, що вони існують. Десь на наступних заняттях глянемо в це питання трохи глибше. &lt;/p&gt;
@@ -870,10 +870,10 @@
         </item>
         <item>
         <title>7. Стінки</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/walls/</link>
+        <link>http://localhost:1313/docs/godot_pong/walls/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/docs/godot_pong/walls/</guid>
+        <guid>http://localhost:1313/docs/godot_pong/walls/</guid>
         <description>&lt;h1 id=&#34;стінки&#34;&gt;Стінки
 &lt;/h1&gt;&lt;p&gt;В цій грі потрібні 2 типи стінок, одні, вгорі і внизу поля, просто відбиватимуть м&amp;rsquo;яч. Інші, позаду кожного з гравців, зараховуватимуть поразку кожному з них та стартуватимуть новий раунд.
 Почнемо зі стінок відбивання.
@@ -989,7 +989,7 @@
 &lt;/div&gt;
 відразу після нашого попереднього рядка.&lt;/p&gt;
 &lt;p&gt;Ось що ми можемо побачити після двох ігор:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/Random01.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/Random01.jpg&#34;
 	
 	
 	
@@ -1018,10 +1018,10 @@
         </item>
         <item>
         <title>8. Рахунок</title>
-        <link>https://3dvit.in.ua/docs/godot_pong/score/</link>
+        <link>http://localhost:1313/docs/godot_pong/score/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/docs/godot_pong/score/</guid>
+        <guid>http://localhost:1313/docs/godot_pong/score/</guid>
         <description>&lt;h1 id=&#34;рахунок&#34;&gt;Рахунок
 &lt;/h1&gt;&lt;p&gt;Почнемо з того, що ми вже добре вміємо, до вузла &lt;code&gt;Main&lt;/code&gt; додамо новий вузол &lt;code&gt;Area2D&lt;/code&gt;, до нього відразу колайдер, який розтягнемо, щоб він перекривав лівий вихід для кулі, позаду лівого гравця. Перейменуємо вузол на &lt;code&gt;LeftWall&lt;/code&gt;. Далі здублюємо, копію переміщаємо вправо, позаду правого гравця і перейменовуємо &lt;code&gt;RightWall&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&#34;video-wrapper&#34;&gt;
@@ -1269,7 +1269,7 @@
 &lt;p&gt;Зараз ми вже можемо запустити гру та розпочати поєдинок.
 Цей проект ми поки залишаємо. Візуалізація рахунку гри та взагалі оформлення користувацького інтерфейсу буде детальніше розглянута з наступним проектом. А всім хто дійшов до цієї точки, пропоную самостійно покращити вигляд гри, намалювавши зображення для дощечок, кульки та ігрового поля.
 Ось що у мене получилось:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/images/PongFin.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/PongFin.jpg&#34;
 	
 	
 	
@@ -1280,7 +1280,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Нижче ви можете завантажити готовий і відчищений проект цієї гри:&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://3dvit.in.ua/download/pong_fin.zip&#34; &gt;pong_fin.zip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/download/pong_fin.zip&#34; &gt;pong_fin.zip&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         

@@ -6,37 +6,21 @@
         <description>Recent content in Categories on 3D Vitalii Shmorhun</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>uk-ua</language>
-        <lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Resources</title>
+        <link>https://3dvit.in.ua/categories/resources/</link>
+        <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://3dvit.in.ua/categories/resources/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Godot</title>
         <link>https://3dvit.in.ua/categories/godot/</link>
-        <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://3dvit.in.ua/categories/godot/</guid>
         <description>&lt;img src="https://godotengine.org/assets/press/icon_color_outline.png" alt="Featured image of post Godot" /&gt;</description>
-        </item>
-        <item>
-        <title>Syntax</title>
-        <link>https://3dvit.in.ua/categories/syntax/</link>
-        <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://3dvit.in.ua/categories/syntax/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Themes</title>
-        <link>https://3dvit.in.ua/categories/themes/</link>
-        <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://3dvit.in.ua/categories/themes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Godot</title>
-        <link>https://3dvit.in.ua/categories/example-category/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://3dvit.in.ua/categories/example-category/</guid>
-        <description></description>
         </item>
         
     </channel>
