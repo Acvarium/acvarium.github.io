@@ -6,9 +6,7 @@ image: materials_cover.jpg
 slug: materials
 categories:
     - resources
-tags:
     - links
-
 
 ---
 

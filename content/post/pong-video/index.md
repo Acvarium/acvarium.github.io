@@ -4,13 +4,9 @@ description:
 date: 2025-02-23 00:00:00+0000
 image: pong_cover.jpg
 categories:
-    - tutorial
+    - videos
+    - tutorials
     - godot
-tags:
-    - godot
-    - video
-    - tutorial
-    - youtube
 ---
 
 

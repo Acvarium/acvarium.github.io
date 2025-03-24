@@ -154,6 +154,7 @@
 
     &.show {
         display: flex;
+        padding-top: 15px;
     }
 
     @include respond(md) {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Уроки on 3D Vitalii Shmorhun</title>
+        <link>https://3dvit.in.ua/categories/tutorials/</link>
+        <description>Recent content in Уроки on 3D Vitalii Shmorhun</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>uk-ua</language>
+        <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/categories/tutorials/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Створюємо Pong у Godot 4. Серія відео-уроків</title>
+        <link>https://3dvit.in.ua/p/%D1%81%D1%82%D0%B2%D0%BE%D1%80%D1%8E%D1%94%D0%BC%D0%BE-pong-%D1%83-godot-4.-%D1%81%D0%B5%D1%80%D1%96%D1%8F-%D0%B2%D1%96%D0%B4%D0%B5%D0%BE-%D1%83%D1%80%D0%BE%D0%BA%D1%96%D0%B2/</link>
+        <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://3dvit.in.ua/p/%D1%81%D1%82%D0%B2%D0%BE%D1%80%D1%8E%D1%94%D0%BC%D0%BE-pong-%D1%83-godot-4.-%D1%81%D0%B5%D1%80%D1%96%D1%8F-%D0%B2%D1%96%D0%B4%D0%B5%D0%BE-%D1%83%D1%80%D0%BE%D0%BA%D1%96%D0%B2/</guid>
+        <description>&lt;img src="https://3dvit.in.ua/p/%D1%81%D1%82%D0%B2%D0%BE%D1%80%D1%8E%D1%94%D0%BC%D0%BE-pong-%D1%83-godot-4.-%D1%81%D0%B5%D1%80%D1%96%D1%8F-%D0%B2%D1%96%D0%B4%D0%B5%D0%BE-%D1%83%D1%80%D0%BE%D0%BA%D1%96%D0%B2/pong_cover.jpg" alt="Featured image of post Створюємо Pong у Godot 4. Серія відео-уроків" /&gt;&lt;p&gt;Godot - це пречудовий і приємний у роботі рушій, що придатний для створення як 2-вимірних так і 3-вимірних ігор. Як на мене, він заслуговує максимум уваги та поширення. Особливо приємним він є для тих, хто хотів би розпочати свій шллях у розробку комп&amp;rsquo;ютерних ігор. Немає потреби встановлювати купу інструментів розробки, створювати облікові записи&amp;hellip; Досить завантажити лише один файл, і перед вами усе, що для початку роботи.&lt;br&gt;
+Ця невеличка серія уроків має на меті познайомити Вас з основами основ роботи в Godot 4. Вона орієнтована на тих, хто тільки розпочинає взагалі своє знайомство з програмуванням. Впродовж кількох відео ми створемо свою версію найстарішої комерійної гри усіх часів - Pong.&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/75O7C1uqjHM&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/MT59dCLVe70&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

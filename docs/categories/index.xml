@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>uk-ua</language>
         <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Resources</title>
+        <title>Godot</title>
+        <link>https://3dvit.in.ua/categories/godot/</link>
+        <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://3dvit.in.ua/categories/godot/</guid>
+        <description>&lt;img src="https://godotengine.org/assets/press/icon_color_outline.png" alt="Featured image of post Godot" /&gt;</description>
+        </item>
+        <item>
+        <title>Reasources</title>
         <link>https://3dvit.in.ua/categories/resources/</link>
         <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
         
@@ -15,12 +23,36 @@
         <description></description>
         </item>
         <item>
-        <title>Godot</title>
-        <link>https://3dvit.in.ua/categories/godot/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <title>Відео</title>
+        <link>https://3dvit.in.ua/categories/videos/</link>
+        <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://3dvit.in.ua/categories/godot/</guid>
-        <description>&lt;img src="https://godotengine.org/assets/press/icon_color_outline.png" alt="Featured image of post Godot" /&gt;</description>
+        <guid>https://3dvit.in.ua/categories/videos/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Посилання</title>
+        <link>https://3dvit.in.ua/categories/links/</link>
+        <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://3dvit.in.ua/categories/links/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Уроки</title>
+        <link>https://3dvit.in.ua/categories/tutorials/</link>
+        <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://3dvit.in.ua/categories/tutorials/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Малюнки</title>
+        <link>https://3dvit.in.ua/categories/drawings/</link>
+        <pubDate>Sun, 05 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://3dvit.in.ua/categories/drawings/</guid>
+        <description></description>
         </item>
         
     </channel>

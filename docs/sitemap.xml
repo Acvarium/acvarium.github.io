@@ -36,7 +36,7 @@
     <loc>https://3dvit.in.ua/categories/</loc>
     <lastmod>2025-02-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://3dvit.in.ua/tags/links/</loc>
+    <loc>https://3dvit.in.ua/categories/godot/</loc>
     <lastmod>2025-02-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://3dvit.in.ua/post/</loc>
@@ -45,11 +45,26 @@
     <loc>https://3dvit.in.ua/categories/resources/</loc>
     <lastmod>2025-02-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://3dvit.in.ua/tags/</loc>
+    <loc>https://3dvit.in.ua/categories/videos/</loc>
+    <lastmod>2025-02-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://3dvit.in.ua/categories/links/</loc>
+    <lastmod>2025-02-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://3dvit.in.ua/p/%D1%81%D1%82%D0%B2%D0%BE%D1%80%D1%8E%D1%94%D0%BC%D0%BE-pong-%D1%83-godot-4.-%D1%81%D0%B5%D1%80%D1%96%D1%8F-%D0%B2%D1%96%D0%B4%D0%B5%D0%BE-%D1%83%D1%80%D0%BE%D0%BA%D1%96%D0%B2/</loc>
     <lastmod>2025-02-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://3dvit.in.ua/p/materials/</loc>
     <lastmod>2025-02-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://3dvit.in.ua/categories/tutorials/</loc>
+    <lastmod>2025-02-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://3dvit.in.ua/categories/drawings/</loc>
+    <lastmod>2025-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://3dvit.in.ua/p/drawings/</loc>
+    <lastmod>2025-01-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://3dvit.in.ua/page/</loc>
     <lastmod>2022-03-06T00:00:00+00:00</lastmod>
@@ -59,8 +74,10 @@
   </url><url>
     <loc>https://3dvit.in.ua/docs/</loc>
   </url><url>
-    <loc>https://3dvit.in.ua/categories/godot/</loc>
+    <loc>https://3dvit.in.ua/tags/</loc>
   </url><url>
-    <loc>https://3dvit.in.ua/%D0%BC%D0%BE%D1%97-%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F/</loc>
+    <loc>https://3dvit.in.ua/links/</loc>
+  </url><url>
+    <loc>https://3dvit.in.ua/search/</loc>
   </url>
 </urlset>
