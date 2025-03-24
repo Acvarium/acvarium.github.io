@@ -20,3 +20,9 @@ pagerSize = 5
 
 [params]
   BookSection = "docs"
+
+ignoreFiles = ["assets-raw/.*"]
+
+[params.search]
+	enable = true
+	includeSections = ["post", "docs"]

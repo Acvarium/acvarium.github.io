@@ -41,3 +41,17 @@ name = "itch.io"
 url = "https://acvarium.itch.io/"
 	[social.params]
 	icon = "brand-itch"
+
+[[social]]
+identifier = "monobank"
+name = "Monobank"
+url = "https://send.monobank.ua/jar/8CwMnEXrWZ"
+	[social.params]
+	icon = "mono-jar"
+
+[[social]]
+identifier = "buymeacoffee"
+name = "buymeacoffee"
+url = "https://buymeacoffee.com/3dvit_ua"
+	[social.params]
+	icon = "buymeacoffee"

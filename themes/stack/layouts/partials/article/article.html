@@ -20,9 +20,11 @@
   {{ with .Pages.ByWeight }}
     {{ $firstChild := index . 0 }}
     {{ with $firstChild }}
-      <div class="next-article">
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </div>
+      {{ if and (strings.HasPrefix .RelPermalink "/docs/") (not .Params.no_next_article) }}
+        <div class="next-article">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </div>
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ else }}
@@ -31,13 +33,16 @@
       {{ $nextIndex := add $index 1 }}
       {{ if lt $nextIndex (len $pages) }}
         {{ $next := index $pages $nextIndex }}
-        <div class="next-article">
-          <a href="{{ $next.RelPermalink }}">{{ $next.Title }}</a>
-        </div>
+        {{ if and (strings.HasPrefix $next.RelPermalink "/docs/") (not $next.Params.no_next_article) }}
+          <div class="next-article">
+            <a href="{{ $next.RelPermalink }}">{{ $next.Title }}</a>
+          </div>
+        {{ end }}
       {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}
+
 
   
 
