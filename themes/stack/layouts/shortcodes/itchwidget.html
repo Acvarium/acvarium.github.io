@@ -1,0 +1,42 @@
+<style>
+  .itchio-wrapper {
+
+  }
+
+  .itchio-large {
+    display: inline-block;
+  }
+
+  .itchio-small {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    .itchio-large {
+      display: none;
+    }
+    .itchio-small {
+      display: inline-block;
+    }
+  }
+</style>
+
+<div class="itchio-wrapper">
+  <div class="itchio-large">
+    <iframe frameborder="0" 
+            src="{{ .Get "src" }}" 
+            width="552" 
+            height="167">
+      <a href="{{ .Get "link" }}">{{ .Get "title" }}</a>
+    </iframe>
+  </div>
+
+  <div class="itchio-small">
+    <iframe frameborder="0" 
+            src="{{ .Get "src" }}" 
+            width="208" 
+            height="167">
+      <a href="{{ .Get "link" }}">{{ .Get "title" }}</a>
+    </iframe>
+  </div>
+</div>

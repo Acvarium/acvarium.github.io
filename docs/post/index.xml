@@ -37,13 +37,63 @@
 &lt;p&gt;Одного тижня на те, щоб перемалювати усе в грі, та оформити її на публікацію, доволі мало. То я і покинув цю ідею.&lt;/p&gt;
 &lt;p&gt;Минув ще рік і цього разу згадав про ці писанки уже за місяць до Великодня. Затратив кілька вечорів по 2-3 години на намалювання нових писанок та фону. Трохи виправив помилок та дооформив. Та з запасом трохи більше ніж тиждень до свята відправив її у вільне плавання.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Гра зараз доступна на платформі &lt;strong&gt;Itch.io&lt;/strong&gt;, де у тому числі є версія, що працює у Web-браузері.&lt;/p&gt;
-&lt;iframe frameborder=&#34;0&#34; src=&#34;https://itch.io/embed/3459303?linkback=true&#34; width=&#34;552&#34; height=&#34;167&#34;&gt;&lt;a href=&#34;https://acvarium.itch.io/pysanka-puzzle&#34;&gt;Pysanka Puzzle by acvarium&lt;/a&gt;&lt;/iframe&gt;
+&lt;p&gt;Гра зараз доступна на платформі itch.io, де у тому числі є версія, що працює у Web-браузері.&lt;/p&gt;
+&lt;p&gt;
+&lt;style&gt;
+  .itchio-wrapper {
+
+  }
+
+  .itchio-large {
+    display: inline-block;
+  }
+
+  .itchio-small {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    .itchio-large {
+      display: none;
+    }
+    .itchio-small {
+      display: inline-block;
+    }
+  }
+&lt;/style&gt;
+
+&lt;div class=&#34;itchio-wrapper&#34;&gt;
+  &lt;div class=&#34;itchio-large&#34;&gt;
+    &lt;iframe frameborder=&#34;0&#34; 
+            src=&#34;https://itch.io/embed/3459303?linkback=true&#34; 
+            width=&#34;552&#34; 
+            height=&#34;167&#34;&gt;
+      &lt;a href=&#34;https://acvarium.itch.io/pysanka-puzzle&#34;&gt;Pysanka Puzzle by acvarium&lt;/a&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;itchio-small&#34;&gt;
+    &lt;iframe frameborder=&#34;0&#34; 
+            src=&#34;https://itch.io/embed/3459303?linkback=true&#34; 
+            width=&#34;208&#34; 
+            height=&#34;167&#34;&gt;
+      &lt;a href=&#34;https://acvarium.itch.io/pysanka-puzzle&#34;&gt;Pysanka Puzzle by acvarium&lt;/a&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;hr&gt;
 &lt;p&gt;Також за посиланням нижче, можна завантажити версію для &lt;strong&gt;Android&lt;/strong&gt;:&lt;/p&gt;
-&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.acvarium.pysankypuzzle&#34; target=&#34;_blank&#34;&gt;
-  &lt;img src=&#34;https://3dvit.in.ua/images/get-it-on-google-play_pysanky.png&#34; alt=&#34;Get it on Google Play&#34; height=&#34;80&#34;/&gt;
-&lt;/a&gt;
+&lt;style&gt;
+  .googleplay-wrapper {
+  }
+&lt;/style&gt;
+
+&lt;div class=&#34;googleplay-wrapper&#34;&gt;
+	&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.acvarium.pysankypuzzle&#34; target=&#34;_blank&#34;&gt;
+	  &lt;img src=&#34;https://3dvit.in.ua/images/get-it-on-google-play_pysanky.png&#34; alt=&#34;Get it on Google Play&#34; height=&#34;80&#34;/&gt;
+	&lt;/a&gt;
+&lt;/div&gt;
 
 </description>
         </item>
