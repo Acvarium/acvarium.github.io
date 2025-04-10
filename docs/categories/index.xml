@@ -6,10 +6,18 @@
         <description>Recent content in Categories on 3D Vitalii Shmorhun</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>uk-ua</language>
-        <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 10 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Game</title>
+        <link>https://3dvit.in.ua/categories/game/</link>
+        <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://3dvit.in.ua/categories/game/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Godot</title>
         <link>https://3dvit.in.ua/categories/godot/</link>
-        <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
         
         <guid>https://3dvit.in.ua/categories/godot/</guid>
         <description>&lt;img src="https://godotengine.org/assets/press/icon_color_outline.png" alt="Featured image of post Godot" /&gt;</description>

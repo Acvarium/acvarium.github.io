@@ -6,7 +6,48 @@
         <description>Recent content in Posts on 3D Vitalii Shmorhun</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>uk-ua</language>
-        <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 10 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://3dvit.in.ua/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Писанковий Пазл</title>
+        <link>https://3dvit.in.ua/p/pysanky/</link>
+        <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://3dvit.in.ua/p/pysanky/</guid>
+        <description>&lt;img src="https://3dvit.in.ua/p/pysanky/cover.jpg" alt="Featured image of post Писанковий Пазл" /&gt;&lt;p&gt;Цю невеличку гру я зробив ще кілька років тому. Створювалась вона для курсу по Godot 3.5, який тоді проводив у співпраці з компанією &lt;strong&gt;SharpMinds&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Початок того курсу - це взагалі цікава історія. Доволі довго у моїй голові крутилась думка, що було б добре зробити щось подібне. Чисто випадково зустрів стару знайому, яка запитала, чи не знаю я когось, хто проводить курси по розробці ігор для дітей. Це підсилило мої прагнення запустити курс. Але це здавалось занадто складно. Треба ж знайти приміщення, техніку, час&amp;hellip;&lt;/p&gt;
+&lt;p&gt;На той момент я працював у компанії &lt;strong&gt;SharpMinds&lt;/strong&gt;. Вирішив запитати, може вони з чимось з цього зможуть допомогти. Уже за кілька тижнів я мав приміщення, список дітей на курс, та навіть техніку для тих, у кого небуло, або були занадто старенькі та недолугі ноутбуки. З мого боку залишалось розпланувати та розпочати курс. Що я і зробив.&lt;/p&gt;
+&lt;p&gt;Голова HR-відділу дуже хотіла у якісь формі задіяти деяких меценатів з Нідерландів. Найцікавішим з них є художник &lt;a class=&#34;link&#34; href=&#34;https://www.instagram.com/leonkeer/&#34;  target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;
+    &gt;&lt;strong&gt;Leon Keer&lt;/strong&gt;&lt;/a&gt;. З ним доволі довго велись перемовини. Планувалось, що він проведе онлайн-майстерклас. Але, на жаль, з цим не склалось. Усе закінчилось тим, що він дозволив використати якусь з його творчості в межах курсу.&lt;/p&gt;
+&lt;p&gt;Тож, погортавши його інстаграм-сторінку кілька разів, я зупинився на писанках&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://3dvit.in.ua/p/pysanky/leon_pysanky.jpg&#34;
+	width=&#34;309&#34;
+	height=&#34;550&#34;
+	srcset=&#34;https://3dvit.in.ua/p/pysanky/leon_pysanky_hu_6f6d0627efd9d384.jpg 480w, https://3dvit.in.ua/p/pysanky/leon_pysanky_hu_a5f4e9202c4d4314.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Leon Keer: PYSANKY&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;56&#34;
+		data-flex-basis=&#34;134px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;На їх основі і була створена перша версія гри, та вона ж і була використана в межах курсу.&lt;/p&gt;
+&lt;p&gt;З тих пір, ця гра лежала у мене на компі. А минулого року, десь за тиждень до Великодня, мені подумалось, &amp;ldquo;чого б не випустити цю гру&amp;rdquo;. Вона виглядає святково. Одна проблема - Леон давав дозвіл використовувати свої творіння в межах курсу. Але ж не для мене особисто для публікації цієї гри.&lt;/p&gt;
+&lt;p&gt;Одного тижня на те, щоб перемалювати усе в грі, та оформити її на публікацію, доволі мало. То я і покинув цю ідею.&lt;/p&gt;
+&lt;p&gt;Минув ще рік і цього разу згадав про ці писанки уже за місяць до Великодня. Затратив кілька вечорів по 2-3 години на намалювання нових писанок та фону. Трохи виправив помилок та дооформив. Та з запасом трохи більше ніж тиждень до свята відправив її у вільне плавання.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Гра зараз доступна на платформі &lt;strong&gt;Itch.io&lt;/strong&gt;, де у тому числі є версія, що працює у Web-браузері.&lt;/p&gt;
+&lt;iframe frameborder=&#34;0&#34; src=&#34;https://itch.io/embed/3459303?linkback=true&#34; width=&#34;552&#34; height=&#34;167&#34;&gt;&lt;a href=&#34;https://acvarium.itch.io/pysanka-puzzle&#34;&gt;Pysanka Puzzle by acvarium&lt;/a&gt;&lt;/iframe&gt;
+&lt;hr&gt;
+&lt;p&gt;Також за посиланням нижче, можна завантажити версію для &lt;strong&gt;Android&lt;/strong&gt;:&lt;/p&gt;
+&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.acvarium.pysankypuzzle&#34; target=&#34;_blank&#34;&gt;
+  &lt;img src=&#34;https://3dvit.in.ua/images/get-it-on-google-play_pysanky.png&#34; alt=&#34;Get it on Google Play&#34; height=&#34;80&#34;/&gt;
+&lt;/a&gt;
+
+</description>
+        </item>
+        <item>
         <title>Створюємо Pong у Godot 4. Серія відео-уроків</title>
         <link>https://3dvit.in.ua/p/%D1%81%D1%82%D0%B2%D0%BE%D1%80%D1%8E%D1%94%D0%BC%D0%BE-pong-%D1%83-godot-4.-%D1%81%D0%B5%D1%80%D1%96%D1%8F-%D0%B2%D1%96%D0%B4%D0%B5%D0%BE-%D1%83%D1%80%D0%BE%D0%BA%D1%96%D0%B2/</link>
         <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
