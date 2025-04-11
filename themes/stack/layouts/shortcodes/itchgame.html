@@ -1,0 +1,90 @@
+<style>
+.itchgame-container.hidden {
+  display: none;
+}
+
+.itchgame-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.itchgame-button {
+  z-index: 2;
+  padding: 24px 60px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.itchgame-button:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+</style>
+
+<div id="itchgame-container-{{ .Get "id" }}" class="itchgame-container">
+  <div id="game-container-{{ .Get "id" }}"
+       class="itchgame-wrapper"
+       style="
+         width: {{ .Get "width" | default "960" }}px;
+         height: {{ .Get "height" | default "600" }}px;
+         {{ with .Get "image" }}
+           background-image: url('{{ . }}');
+           background-size: cover;
+           background-position: center;
+         {{ else }}
+           background-color: black;
+         {{ end }}
+       ">
+    <button id="load-game-{{ .Get "id" }}" class="itchgame-button">Грати</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const gameId = "{{ .Get "id" }}";
+  const minWidth = parseInt("{{ .Get "width" | default "960" }}", 10) + 50;
+  const container = document.getElementById("itchgame-container-" + gameId);
+
+  function checkWidth() {
+    if (window.innerWidth < minWidth) {
+      if (container) {
+        container.classList.add("hidden");
+      }
+    } else {
+      if (container) {
+        container.classList.remove("hidden");
+      }
+    }
+  }
+
+  // ✅ Первісна перевірка ширини при завантаженні сторінки
+  checkWidth();
+
+  // ✅ Додавання слухача подій для відстеження зміни розміру вікна
+  window.addEventListener("resize", checkWidth);
+
+  const button = document.getElementById("load-game-" + gameId);
+  const wrapper = document.getElementById("game-container-" + gameId);
+
+  if (button && wrapper) {
+    button.addEventListener("click", function () {
+      const iframe = document.createElement("iframe");
+      iframe.src = "{{ .Get "url" }}";
+      iframe.width = "{{ .Get "width" | default "960" }}";
+      iframe.height = "{{ .Get "height" | default "600" }}";
+      iframe.frameBorder = "0";
+      iframe.allowFullscreen = true;
+      iframe.style.display = "block";
+
+      wrapper.innerHTML = "";
+      wrapper.appendChild(iframe);
+    });
+  }
+});
+</script>

@@ -49,9 +49,3 @@ url = "https://send.monobank.ua/jar/8CwMnEXrWZ"
 	[social.params]
 	icon = "mono-jar"
 
-[[social]]
-identifier = "buymeacoffee"
-name = "buymeacoffee"
-url = "https://buymeacoffee.com/3dvit_ua"
-	[social.params]
-	icon = "buymeacoffee"

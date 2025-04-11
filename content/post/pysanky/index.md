@@ -47,4 +47,15 @@ _____
 
 {{< googleplay url="https://play.google.com/store/apps/details?id=com.acvarium.pysankypuzzle" img="/images/get-it-on-google-play_pysanky.png" >}}
 
+_____
+
+{{< itchgame 
+    id="mygame1" 
+    url="https://itch.io/embed-upload/13340996?color=1b1b1b" 
+    width="600" 
+    height="1044"
+    image="/images/pysanky_blured.jpg" 
+>}}
+
+
 

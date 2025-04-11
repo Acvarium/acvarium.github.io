@@ -95,6 +95,96 @@
 	&lt;/a&gt;
 &lt;/div&gt;
 
+&lt;hr&gt;
+&lt;style&gt;
+.itchgame-container.hidden {
+  display: none;
+}
+
+.itchgame-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.itchgame-button {
+  z-index: 2;
+  padding: 24px 60px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.itchgame-button:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+&lt;/style&gt;
+
+&lt;div id=&#34;itchgame-container-mygame1&#34; class=&#34;itchgame-container&#34;&gt;
+  &lt;div id=&#34;game-container-mygame1&#34;
+       class=&#34;itchgame-wrapper&#34;
+       style=&#34;
+         width: 600px;
+         height: 1044px;
+         
+           background-image: url(&#39;/images/pysanky_blured.jpg&#39;);
+           background-size: cover;
+           background-position: center;
+         
+       &#34;&gt;
+    &lt;button id=&#34;load-game-mygame1&#34; class=&#34;itchgame-button&#34;&gt;Грати&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+document.addEventListener(&#34;DOMContentLoaded&#34;, function () {
+  const gameId = &#34;mygame1&#34;;
+  const minWidth = parseInt(&#34;600&#34;, 10) + 50;
+  const container = document.getElementById(&#34;itchgame-container-&#34; + gameId);
+
+  function checkWidth() {
+    if (window.innerWidth &lt; minWidth) {
+      if (container) {
+        container.classList.add(&#34;hidden&#34;);
+      }
+    } else {
+      if (container) {
+        container.classList.remove(&#34;hidden&#34;);
+      }
+    }
+  }
+
+  
+  checkWidth();
+
+  
+  window.addEventListener(&#34;resize&#34;, checkWidth);
+
+  const button = document.getElementById(&#34;load-game-&#34; + gameId);
+  const wrapper = document.getElementById(&#34;game-container-&#34; + gameId);
+
+  if (button &amp;&amp; wrapper) {
+    button.addEventListener(&#34;click&#34;, function () {
+      const iframe = document.createElement(&#34;iframe&#34;);
+      iframe.src = &#34;https:\/\/itch.io\/embed-upload\/13340996?color=1b1b1b&#34;;
+      iframe.width = &#34;600&#34;;
+      iframe.height = &#34;1044&#34;;
+      iframe.frameBorder = &#34;0&#34;;
+      iframe.allowFullscreen = true;
+      iframe.style.display = &#34;block&#34;;
+
+      wrapper.innerHTML = &#34;&#34;;
+      wrapper.appendChild(iframe);
+    });
+  }
+});
+&lt;/script&gt;
+
 </description>
         </item>
         <item>
